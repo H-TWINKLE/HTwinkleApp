@@ -31,6 +31,12 @@ public class LoginActivity extends BaseActivity {
     private Button login_bt;
 
 
+    @Event(value = R.id.login_bt)
+    private void btClick(View view){
+        startActivity(new Intent(this,SetPassActivity.class));
+    }
+
+
     @Event(value = R.id.login_tv_fPass)
     private void fPassClick(View view) {
         startActivity(10002);

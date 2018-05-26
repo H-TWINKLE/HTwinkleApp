@@ -13,5 +13,21 @@
 
     <!--regOrFor页面-->
     <string name="regOrFor">注册Or忘记密码</string>
+    <string name="please_input_tel">请输入您手机号</string>
+    <string name="ok">确定</string>
+    <string name="re_get_code">重新获取</string>
+    <string name="tel_form_not_val">电话格式不正确</string>
+    <string name="code_form_not_val">验证码格式不正确</string>
+    <string name="please_input_code">请输入验证码</string>
+    <string name="check">验证</string>
+
+    <!--setPass页面-->
+    <string name="create_pass">创建密码</string>
+    <string name="revise_pass">修改密码</string>
+    <string name="tests">页面测试</string>
+    <string name="pass1">请输入密码</string>
+    <string name="pass2">请再次输入密码</string>
+    <string name="pass_not_equal">两次密码不同，请重新输入</string>
+
 
 </resources>

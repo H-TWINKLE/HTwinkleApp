@@ -1,11 +1,22 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.mob.sdk'
+
+// 在MobSDK的扩展中注册SMSSDK的相关信息
+MobSDK {
+    appKey "2606701671eeb"
+    appSecret "4bb2ffc425f5ab8a45ea64f0fe0e82c9"
+
+    SMSSDK {
+        gui false
+    }
+}
 
 android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.twinkle.htwinkle"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -29,9 +40,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'org.xutils:xutils:3.5.0'
-    //XUTILS3
-    implementation 'com.alibaba:fastjson:1.2.39'
-    //FASTJSON
+
+    implementation 'org.xutils:xutils:3.5.0' //XUTILS3
+    implementation 'com.alibaba:fastjson:1.2.39'//FASTJSON
     implementation 'com.android.support:design:27.1.1'  //textinputlayout
+    implementation 'cn.bmob.android:bmob-sdk:3.6.2'  //bmob
 }

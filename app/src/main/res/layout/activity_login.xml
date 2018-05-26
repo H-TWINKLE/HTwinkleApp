@@ -65,7 +65,7 @@
             android:layout_marginTop="50dp"
             android:background="@drawable/buttonshape"
             android:text="@string/login"
-            android:textColor="#000"
+            android:textColor="@color/colorBack"
             android:textSize="15sp"
             android:textStyle="bold" />
 
@@ -79,7 +79,7 @@
                 android:gravity="start"
                 android:layout_weight="1"
                 android:textSize="14sp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorBack"
                 android:text="@string/forgetPass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -89,7 +89,7 @@
                 android:gravity="end"
                 android:layout_weight="1"
                 android:textSize="14sp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorBack"
                 android:text="@string/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

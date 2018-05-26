@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.SetPassActivity">
+
+    <include layout="@layout/base_toolbar" />
+
+
+    <TextView
+        android:id="@+id/sp_tv_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="@string/tests"/>
+
+
+   <EditText
+       android:id="@+id/sp_et_pass1"
+       android:layout_marginTop="30dp"
+       android:layout_marginEnd="50dp"
+       android:layout_marginStart="50dp"
+       android:inputType="textPassword"
+       android:textColor="@color/colorBack"
+       android:hint="@string/pass1"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" />
+
+    <EditText
+        android:inputType="textPassword"
+        android:id="@+id/sp_et_pass2"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:textColor="@color/colorBack"
+        android:hint="@string/pass2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/sp_bt_ok"
+        android:textColor="@color/colorBack"
+        android:text="@string/ok"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:background="@drawable/buttonshape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
