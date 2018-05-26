@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Htwinkle</string>
+
+    <!--Welcome页面-->
+    <string name="skip">跳过</string>
+
+    <!--Login页面-->
+    <string name="inputTel">请输入手机号</string>
+    <string name="inputPass">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="forgetPass">忘记密码</string>
+    <string name="register">注册</string>
+
+    <!--regOrFor页面-->
+    <string name="regOrFor">注册Or忘记密码</string>
+
+</resources>

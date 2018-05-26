@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/wel_cl"
+    tools:context=".ui.WelcomeActivity">
+
+    <ImageView
+        android:id="@+id/wel_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/wel" />
+
+    <Button
+        android:id="@+id/wel_bt"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/buttonshape"
+        android:textColor="#000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/wel_img"
+        app:layout_constraintEnd_toEndOf="@+id/wel_img"
+        app:layout_constraintHorizontal_bias="0.029"
+        app:layout_constraintStart_toStartOf="@+id/wel_img"
+        app:layout_constraintTop_toTopOf="@+id/wel_img"
+        app:layout_constraintVertical_bias="0.984"
+        tools:text="@string/skip"/>
+
+</android.support.constraint.ConstraintLayout>
