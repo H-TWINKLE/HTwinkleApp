@@ -48,4 +48,5 @@ dependencies {
     implementation 'cn.bmob.android:bmob-sdk:3.6.2'//bmob
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30' //recyclerview adapter
     implementation 'com.android.support:recyclerview-v7:27.1.1'//recyclerview
+    implementation 'com.youth.banner:banner:1.4.10'  //banner
 }

@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="30dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/rv_click_bg"
     android:clickable="true"
     android:focusable="true"
-    android:background="@drawable/rv_click_bg"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:gravity="center|start"
+    android:padding="5dp">
+
+
+    <ImageView
+        android:id="@+id/main_side_iv_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:contentDescription="@null"
+        tools:src="@drawable/setting" />
 
     <TextView
         android:id="@+id/main_side_tv_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        tools:text="setting" />
 
 </LinearLayout>

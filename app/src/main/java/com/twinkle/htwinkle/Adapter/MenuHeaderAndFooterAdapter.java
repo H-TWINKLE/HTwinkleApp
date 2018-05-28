@@ -8,20 +8,21 @@ import com.twinkle.htwinkle.bean.ViewTypes;
 
 import java.util.List;
 
-public class HeaderAndFooterAdapter extends BaseQuickAdapter<ViewTypes, BaseViewHolder> {
+public class MenuHeaderAndFooterAdapter extends BaseQuickAdapter<ViewTypes, BaseViewHolder> {
 
-    public HeaderAndFooterAdapter(List<ViewTypes> list) {
+    public MenuHeaderAndFooterAdapter(List<ViewTypes> list) {
         super(list);
         setMultiTypeDelegate(new MultiTypeDelegate<ViewTypes>() {
             @Override
             protected int getItemType(ViewTypes s) {
-                return s.type;
+                return s.getType();
             }
         });
 
         getMultiTypeDelegate()
                 .registerItemType(ViewTypes.Title_TYPE, R.layout.side_content_rv)
-                .registerItemType(ViewTypes.Div_TYPE, R.layout.base_div);
+                .registerItemType(ViewTypes.Div_TYPE, R.layout.side_content_div)
+                .registerItemType(ViewTypes.DivHeader_TYPE, R.layout.side_content_div_head);
 
     }
 
@@ -29,10 +30,13 @@ public class HeaderAndFooterAdapter extends BaseQuickAdapter<ViewTypes, BaseView
     protected void convert(BaseViewHolder helper, ViewTypes item) {
         switch (helper.getItemViewType()) {
             case ViewTypes.Title_TYPE:
-                helper.setText(R.id.main_side_tv_title, item.getTitle());
+                helper.setText(R.id.main_side_tv_title, item.getMenuTitle());
+                helper.setImageResource(R.id.main_side_iv_icon,item.getMenuIcon());
                 break;
             case ViewTypes.Div_TYPE:
                 break;
+            case ViewTypes.DivHeader_TYPE:
+                helper.setText(R.id.main_side_tv_head, item.getMenuTitle());
         }
 
     }

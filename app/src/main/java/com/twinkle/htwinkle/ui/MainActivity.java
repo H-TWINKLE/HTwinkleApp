@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -15,14 +16,17 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 
 import com.twinkle.htwinkle.Adapter.FragAdapter;
-import com.twinkle.htwinkle.Adapter.HeaderAndFooterAdapter;
+import com.twinkle.htwinkle.Adapter.MenuHeaderAndFooterAdapter;
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.base.BaseActivity;
 import com.twinkle.htwinkle.bean.ViewTypes;
+import com.twinkle.htwinkle.init.InitString;
 
 import org.xutils.view.annotation.ViewInject;
 
@@ -31,9 +35,9 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
 
-    private List<Fragment> list;
+    private List<Fragment> lists;
 
-    private HeaderAndFooterAdapter headerAndFooterAdapter;
+    private MenuHeaderAndFooterAdapter headerAndFooterAdapter;
 
     @ViewInject(value = R.id.main_tb)
     private Toolbar main_tb;
@@ -77,43 +81,116 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     public void initData() {
-        list = new ArrayList<>();
-        list.add(new IndexFragment());
-        list.add(new NewsFragment());
+        lists = new ArrayList<>();
+        lists.add(new IndexFragment());
+        lists.add(new NewsFragment());
     }
 
     private void initRv() {
 
         main_side_rv.setLayoutManager(new LinearLayoutManager(this));
 
+        setRvAdapter(initRvList());
+
+    }
+
+    private List<ViewTypes> initRvList() {
+
         List<ViewTypes> list = new ArrayList<>();
 
         ViewTypes viewTypes;
-        for (int x = 0; x < 20; x++) {
+
+        String[] user = getResources().getStringArray(R.array.my_menu_user);
+
+        for (int x = 0; x < user.length; x++) {
             viewTypes = new ViewTypes();
-            if (x == 8 || x == 12 || x == 15) {
-                viewTypes.type = 2;
-                list.add(viewTypes);
+            if (x == 0) {
+                viewTypes.setType(3);
+                viewTypes.setMenuTitle(user[x]);
+
             } else {
-                viewTypes.type = 1;
-                viewTypes.setTitle("this is a number :" + x);
+                viewTypes.setType(1);
+                viewTypes.setMenuTitle(user[x]);
+                viewTypes.setMenuIcon(InitString.my_menu_user_icon[x]);
             }
+
             list.add(viewTypes);
         }
 
-        headerAndFooterAdapter = new HeaderAndFooterAdapter(list);
+        list.add(new ViewTypes(2));
+
+        String[] jwgl = getResources().getStringArray(R.array.my_menu_jwgl);
+
+        for (int x = 0; x < jwgl.length; x++) {
+            viewTypes = new ViewTypes();
+            if (x == 0) {
+                viewTypes.setType(3);
+                viewTypes.setMenuTitle(jwgl[x]);
+            } else {
+                viewTypes.setType(1);
+                viewTypes.setMenuTitle(jwgl[x]);
+                viewTypes.setMenuIcon(InitString.my_menu_jwgl_icon[x]);
+            }
+
+            list.add(viewTypes);
+        }
+        list.add(new ViewTypes(2));
+
+        String[] eol = getResources().getStringArray(R.array.my_menu_eol);
+
+        for (int x = 0; x < eol.length; x++) {
+            viewTypes = new ViewTypes();
+            if (x == 0) {
+                viewTypes.setType(3);
+                viewTypes.setMenuTitle(eol[x]);
+            } else {
+                viewTypes.setType(1);
+                viewTypes.setMenuTitle(eol[x]);
+                viewTypes.setMenuIcon(InitString.my_menu_eol_icon[x]);
+            }
+
+            list.add(viewTypes);
+        }
+        list.add(new ViewTypes(2));
+
+        String[] setting = getResources().getStringArray(R.array.my_menu_setting);
+
+        for (int x = 0; x < setting.length; x++) {
+            viewTypes = new ViewTypes();
+            if (x == 0) {
+                viewTypes.setType(3);
+                viewTypes.setMenuTitle(setting[x]);
+            } else {
+                viewTypes.setType(1);
+                viewTypes.setMenuTitle(setting[x]);
+                viewTypes.setMenuIcon(InitString.my_menu_setting_icon[x]);
+            }
+
+            list.add(viewTypes);
+        }
+
+        return list;
+    }
+
+    private void setRvAdapter(List<ViewTypes> list) {
+        headerAndFooterAdapter = new MenuHeaderAndFooterAdapter(list);
         headerAndFooterAdapter.isFirstOnly(false);
         headerAndFooterAdapter.openLoadAnimation(2);
-        headerAndFooterAdapter.addHeaderView(Header1());
+        headerAndFooterAdapter.addHeaderView(setHeader1());
+        headerAndFooterAdapter.addHeaderView(setHeader2());
         headerAndFooterAdapter.setOnItemClickListener(
                 (a, v, p) -> Toast.makeText(this, p + "  :title", Toast.LENGTH_SHORT).show());
 
         main_side_rv.setAdapter(headerAndFooterAdapter);
-
     }
 
-    private View Header1() {
+
+    private View setHeader1() {
         return getLayoutInflater().inflate(R.layout.header_user_info, (ViewGroup) main_side_rv.getParent(), false);
+    }
+
+    private View setHeader2() {
+        return getLayoutInflater().inflate(R.layout.header_user_count, (ViewGroup) main_side_rv.getParent(), false);
     }
 
     private void initBnv() {
@@ -122,7 +199,7 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     }
 
     private void initFragment() {
-        main_vp.setAdapter(new FragAdapter(getSupportFragmentManager(), list));
+        main_vp.setAdapter(new FragAdapter(getSupportFragmentManager(), lists));
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -153,9 +230,11 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         switch (position) {
             case 0:
                 main_bnv.setSelectedItemId(R.id.bnv_index);
+                main_tb.setTitle(R.string.main);
                 break;
             case 1:
                 main_bnv.setSelectedItemId(R.id.bnv_news);
+                main_tb.setTitle(R.string.news);
                 break;
             default:
                 main_bnv.setSelectedItemId(R.id.bnv_index);

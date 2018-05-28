@@ -34,12 +34,57 @@
 
     <!--main页面-->
     <string name="main">首页</string>
+    <string name="news">消息</string>
     <string name="my_main">我的首页</string>
     <string name="my_news">我的消息</string>
+    <string name="my_say">我的个性签名.........................................................</string>
+    <string name="my_lv">LV5</string>
+    <string name="my_focus">我的关注</string>
+    <string name="my_fans">我的粉丝</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string-array name="my_menu_user">
+        <item>我的</item>
+        <item>个人主页</item>
+        <item>我的收藏</item>
+        <item>草稿箱</item>
+    </string-array>
+
+    <string-array name="my_menu_jwgl">
+        <item>教务管理系统</item>
+        <item>个人信息</item>
+        <item>我的成绩</item>
+        <item>我的课表</item>
+    </string-array>
+
+    <string-array name="my_menu_eol">
+        <item>网络教学平台</item>
+        <item>个人信息</item>
+        <item>我的作业</item>
+    </string-array>
+
+    <string-array name="my_menu_setting">
+        <item>设置</item>
+        <item>主题</item>
+        <item>设置</item>
+        <item>注销</item>
+    </string-array>
+
+
+    <!--SharedPreferences-->
+    <string name="User">User</string>
+
     <string name="hello_blank_fragment1">Hello blank fragment11111</string>
     <string name="hello_blank_fragment2">Hello blank fragment22222</string>
+
+    <!--main_index页面-->
+    <string name="lyric">不敢回看 左顾右盼不自然的暗自喜欢 偷偷搭讪总没完地坐立难安 试探说晚安 多空泛又心酸
+        低头呢喃 对你的偏爱太过于明目张胆 在原地打转的小丑伤心不断 空空留遗憾 多难堪又为难 释然 慵懒 尽欢 </string>
+
+    <!--main_news-->
+    <string name="received_comm">收到的评论</string>
+    <string name="send_comm">发出的评论</string>
+    <string name="praise_me">收到的赞</string>
+    <string name="praise_you">发出的赞</string>
 
 
 </resources>
