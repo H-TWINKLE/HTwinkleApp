@@ -11,8 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
+import com.mob.MobSDK;
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.base.BaseActivity;
+import com.twinkle.htwinkle.bmob.Bmob;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -22,7 +24,9 @@ import java.util.Locale;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
-public class RegOrForActivity extends BaseActivity {
+import static com.twinkle.htwinkle.init.InitString.*;
+
+public class RegOrForActivity extends BaseActivity implements Bmob.CheckUserListener {
 
     private int code;
 
@@ -56,16 +60,25 @@ public class RegOrForActivity extends BaseActivity {
 
         } else {
             if (checkTel(text)) {
-                sendCode(text);
+                //  sendCode(text);
+                tel = text;
+                Bmob.INSTANCE.setCheckUserListener(this);
+                Bmob.INSTANCE.BmobCheckUser(text);
             }
         }
     }
+
 
     @Event(value = R.id.rf_tv_smsTip)
     private void onSmsTip(View view) {
         sendCode(tel);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        MobSDK.init(this);
+    }
 
     @Override
     public int setLayout() {
@@ -83,10 +96,10 @@ public class RegOrForActivity extends BaseActivity {
         setToolBarFlag(true);
 
         switch (code) {
-            case 10001:
+            case Register_:
                 setToolBarTitle(R.string.register);
                 break;
-            case 10002:
+            case Modify_Pass:
                 setToolBarTitle(R.string.forgetPass);
                 break;
             default:
@@ -97,7 +110,7 @@ public class RegOrForActivity extends BaseActivity {
 
     @Override
     public void initData() {
-        code = getIntent().getIntExtra("flag", 10000);
+        code = getIntent().getIntExtra("flag", Default_Int);
     }
 
     private boolean checkTel(String tel) {
@@ -135,7 +148,6 @@ public class RegOrForActivity extends BaseActivity {
                 if (result == SMSSDK.RESULT_COMPLETE) {
                     //  Log.i(TAG, "afterEvent: " + data.toString());  // 请注意，此时只是完成了发送验证码的请求，验证码短信还需要几秒钟之后才送达
                     isSendTel = true;
-                    tel = phone;
 
                     runOnUiThread(() -> {
                         rf_et_input.getText().clear();
@@ -161,11 +173,11 @@ public class RegOrForActivity extends BaseActivity {
         SMSSDK.getVerificationCode("86", phone); // 触发操作
     }
 
-    private CountDownTimer timer = new CountDownTimer(60000, 1000) {
+    private CountDownTimer timer = new CountDownTimer(60000, CountDownInterval_) {
         @Override
         public void onTick(long millisUntilFinished) {
             runOnUiThread(() ->
-                    rf_tv_smsTip.setText(String.format(Locale.CHINA, "您的短信应该在 %d 秒内到达", millisUntilFinished / 1000))
+                    rf_tv_smsTip.setText(String.format(Locale.CHINA, "您的短信应该在 %d 秒内到达", millisUntilFinished / CountDownInterval_))
             );
         }
 
@@ -215,9 +227,37 @@ public class RegOrForActivity extends BaseActivity {
     private void startActivity() {
         Intent intent = new Intent(RegOrForActivity.this, SetPassActivity.class);
         intent.putExtra("flag", code);
+        intent.putExtra("tel", tel);
         startActivity(intent);
         this.finish();
     }
 
 
+    @Override
+    public void CheckUserSuccess(int size) {
+        switch (code) {
+            case Modify_Pass:
+                if (size > 0) {
+                    sendCode(tel);
+                } else {
+                    Toast.makeText(this, getString(R.string.user_not_reg), Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case Register_:
+                if (size > 0) {
+                    Toast.makeText(this, getString(R.string.user_reg), Toast.LENGTH_SHORT).show();
+                } else {
+                    sendCode(tel);
+                }
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    @Override
+    public void CheckUserFailure(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
 }

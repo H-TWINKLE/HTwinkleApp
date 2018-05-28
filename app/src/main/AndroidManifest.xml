@@ -32,7 +32,8 @@
         </activity>
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.RegOrForActivity" />
-        <activity android:name=".ui.SetPassActivity"></activity>
+        <activity android:name=".ui.SetPassActivity" />
+        <activity android:name=".ui.MainActivity"></activity>
     </application>
 
 </manifest>

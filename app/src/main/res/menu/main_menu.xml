@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/bnv_index"
+        android:enabled="true"
+        android:icon="@drawable/index"
+        android:title="@string/my_main"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/bnv_news"
+        android:enabled="true"
+        android:icon="@drawable/news"
+        android:title="@string/my_news"
+        app:showAsAction="ifRoom"
+        />
+</menu>

@@ -1,20 +1,29 @@
 package com.twinkle.htwinkle.ui;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.base.BaseActivity;
+import com.twinkle.htwinkle.bean.User;
+import com.twinkle.htwinkle.bmob.Bmob;
+
+import static com.twinkle.htwinkle.init.InitString.*;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
-public class SetPassActivity extends BaseActivity {
+
+public class SetPassActivity extends BaseActivity implements Bmob.RegisterListener, Bmob.ModifyPassListener {
 
     private int code;
+
+    private String tel;
 
     @ViewInject(value = R.id.sp_et_pass1)
     private EditText sp_et_pass1;
@@ -34,14 +43,26 @@ public class SetPassActivity extends BaseActivity {
 
         if (checkPass(pass1, pass2)) {
             switch (code) {
-                case 10001:
+                case Modify_Pass:
+                    modifyListener(pass2);
                     break;
-                case 10002:
+                case Register_:
+                    registerListener(pass2);
                     break;
                 default:
                     break;
             }
         }
+    }
+
+    private void registerListener(String pass) {
+        Bmob.INSTANCE.setRegisterListener(this);
+        Bmob.INSTANCE.BmobRegister(tel, pass);
+    }
+
+    private void modifyListener(String pass) {
+        Bmob.INSTANCE.setModifyPassListener(this);
+        Bmob.INSTANCE.BmobModifyPass(pass, SetPassActivity.this);
     }
 
 
@@ -78,22 +99,46 @@ public class SetPassActivity extends BaseActivity {
     @Override
     public void initView() {
         setToolBarFlag(true);
-        setToolBarTitle(R.string.BMUpdateTitle);
     }
 
     @Override
     public void initData() {
-        code = getIntent().getIntExtra("flag", 10000);
+        code = getIntent().getIntExtra("flag", Default_Int);
+        tel = getIntent().getStringExtra("tel");
+
         switch (code) {
-            case 10001:
+            case Register_:
                 setToolBarTitle(R.string.create_pass);
                 break;
-            case 10002:
+            case Modify_Pass:
                 setToolBarTitle(R.string.revise_pass);
                 break;
             default:
                 setToolBarTitle(R.string.tests);
                 break;
         }
+    }
+
+    @Override
+    public void RegisterSuccess(User user) {
+        finish();
+        startActivity(new Intent(SetPassActivity.this, LoginActivity.class));
+
+    }
+
+    @Override
+    public void RegisterFailure(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void ModifyPassSuccess(String text) {
+        finish();
+        startActivity(new Intent(SetPassActivity.this, LoginActivity.class));
+    }
+
+    @Override
+    public void ModifyPassFailure(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 }

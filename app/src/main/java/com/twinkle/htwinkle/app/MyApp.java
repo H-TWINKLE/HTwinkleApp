@@ -2,8 +2,6 @@ package com.twinkle.htwinkle.app;
 
 import android.app.Application;
 
-import com.mob.MobSDK;
-
 import org.xutils.x;
 
 import cn.bmob.v3.Bmob;
@@ -19,8 +17,6 @@ public class MyApp extends Application {
         x.Ext.setDebug(false);
 
         Bmob.initialize(this, "efcec7fdecd3aefe199792559b33bf1b");
-
-        MobSDK.init(this);
 
     }
 }

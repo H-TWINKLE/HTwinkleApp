@@ -20,6 +20,8 @@
     <string name="code_form_not_val">验证码格式不正确</string>
     <string name="please_input_code">请输入验证码</string>
     <string name="check">验证</string>
+    <string name="user_not_reg">该用户尚未注册</string>
+    <string name="user_reg">该用户已经注册，请登录</string>
 
     <!--setPass页面-->
     <string name="create_pass">创建密码</string>
@@ -28,6 +30,16 @@
     <string name="pass1">请输入密码</string>
     <string name="pass2">请再次输入密码</string>
     <string name="pass_not_equal">两次密码不同，请重新输入</string>
+    <string name="modify_pass_success">修改密码成功</string>
+
+    <!--main页面-->
+    <string name="main">首页</string>
+    <string name="my_main">我的首页</string>
+    <string name="my_news">我的消息</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment1">Hello blank fragment11111</string>
+    <string name="hello_blank_fragment2">Hello blank fragment22222</string>
 
 
 </resources>

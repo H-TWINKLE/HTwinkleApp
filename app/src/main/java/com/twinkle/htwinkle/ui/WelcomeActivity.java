@@ -17,6 +17,8 @@ import org.xutils.view.annotation.ViewInject;
 
 import java.util.Locale;
 
+import cn.bmob.v3.BmobUser;
+
 public class WelcomeActivity extends BaseActivity {
 
     @ViewInject(value = R.id.wel_cl)
@@ -43,8 +45,7 @@ public class WelcomeActivity extends BaseActivity {
         @Override
         public void onFinish() {
             count.cancel();
-            startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
-            finish();
+            checkUser();
         }
     };
 
@@ -87,5 +88,14 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     public void initData() {
 
+    }
+
+    private void  checkUser(){
+        if(BmobUser.getCurrentUser() != null){
+            startActivity(new Intent(WelcomeActivity.this, MainActivity.class)); // 允许用户使用应用
+        }else{
+            startActivity(new Intent(WelcomeActivity.this, LoginActivity.class)); //缓存用户对象为空时， 可打开用户注册界面…
+        }
+        finish();
     }
 }
