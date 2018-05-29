@@ -83,8 +83,11 @@
     <!--main_news-->
     <string name="received_comm">收到的评论</string>
     <string name="send_comm">发出的评论</string>
-    <string name="praise_me">收到的赞</string>
-    <string name="praise_you">发出的赞</string>
+    <string name="received_praise">收到的赞</string>
+    <string name="send_praise">发出的赞</string>
+
+    <!--writeMess页面-->
+    <string name="text">你想说点什么</string>
 
 
 </resources>

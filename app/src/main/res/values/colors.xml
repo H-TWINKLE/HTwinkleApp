@@ -8,4 +8,5 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorGrey">#D7D7D7</color>
     <color name="colorTrans">#00000000</color>
+    <color name="multiple_image_select_primaryDark">#95e1d3</color>
 </resources>

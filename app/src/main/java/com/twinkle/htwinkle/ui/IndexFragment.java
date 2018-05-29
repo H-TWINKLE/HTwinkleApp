@@ -1,5 +1,6 @@
 package com.twinkle.htwinkle.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -41,10 +42,6 @@ import java.util.Objects;
 @ContentView(R.layout.fragment_index)
 public class IndexFragment extends Fragment {
 
-    private static final String TAG = "IndexFragment";
-
-    private FloatingActionButton main_index_fab;
-
     private BottomNavigationView main_bnv;
 
     private IndexAdapter indexAdapter;
@@ -78,7 +75,9 @@ public class IndexFragment extends Fragment {
     }
 
     private void initParentView() {
-        main_index_fab = Objects.requireNonNull(getActivity()).findViewById(R.id.main_index_fab);
+
+        FloatingActionButton  main_index_fab = Objects.requireNonNull(getActivity()).findViewById(R.id.main_index_fab);
+        main_index_fab.setOnClickListener(e -> startActivity(new Intent(getActivity(), WriteMessActivity.class)));
 
         main_bnv = Objects.requireNonNull(getActivity()).findViewById(R.id.main_bnv);
     }
@@ -178,7 +177,6 @@ public class IndexFragment extends Fragment {
     private void showViews() {
         main_bnv.animate().translationY(0).setInterpolator(new AccelerateInterpolator(2)).start();
     }
-
 
 
 }
