@@ -7,16 +7,13 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
-import android.widget.FrameLayout;
 
 import com.twinkle.htwinkle.Adapter.GlideImageLoader;
 import com.twinkle.htwinkle.Adapter.HidingScrollListener;
@@ -25,6 +22,7 @@ import com.twinkle.htwinkle.Adapter.IndexTypesAdapter;
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.bean.IndexTypes;
 import com.twinkle.htwinkle.init.InitString;
+import com.twinkle.htwinkle.yalantis.OwnPullToRefreshView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -41,6 +39,10 @@ import java.util.Objects;
 
 @ContentView(R.layout.fragment_index)
 public class IndexFragment extends Fragment {
+
+    @ViewInject(value = R.id.main_index_pv)
+    private OwnPullToRefreshView main_index_pv;
+
 
     private BottomNavigationView main_bnv;
 
@@ -70,6 +72,8 @@ public class IndexFragment extends Fragment {
         initData();
 
         initParentView();
+
+        initPv();
 
         initRv();
     }
@@ -102,6 +106,16 @@ public class IndexFragment extends Fragment {
             public void onShow() {
                 showViews();
             }
+        });
+
+    }
+
+    private void initPv(){
+
+        main_index_pv.setOnRefreshListener(()->{
+            main_index_pv.postDelayed(()->{
+                main_index_pv.setRefreshing(false);
+            },3000);
         });
 
     }

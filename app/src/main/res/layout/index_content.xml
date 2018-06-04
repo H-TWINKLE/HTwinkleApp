@@ -55,14 +55,15 @@
                 android:gravity="end">
 
                 <TextView
+                    android:text="@string/lv"
                     android:id="@+id/index_cr_tv_lv"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/index_border_lv"
                     android:textColor="#060606"
-                    android:textSize="13sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
-                    tools:text="LV5" />
+                     />
             </LinearLayout>
 
 
@@ -77,7 +78,7 @@
             <ImageView
                 android:id="@+id/index_cr_iv_pic"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="300dp"
                 android:contentDescription="@null"
                 android:scaleType="centerCrop"
                 android:src="@drawable/test" />

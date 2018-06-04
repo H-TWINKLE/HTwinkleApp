@@ -53,10 +53,11 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30' //recyclerview adapter
     implementation 'com.android.support:recyclerview-v7:27.1.1'//recyclerview
     implementation 'com.youth.banner:banner:1.4.10'  //banner
-    implementation ('com.jph.takephoto:takephoto_library:4.0.3'){
+    implementation('com.jph.takephoto:takephoto_library:4.0.3') {
         exclude group: 'io.reactivex'
     }  //图片选择框架
 
     implementation 'com.amap.api:search:5.7.0'  //pio信息
+    implementation 'com.yalantis:phoenix:1.2.3' //下拉刷新
 
 }

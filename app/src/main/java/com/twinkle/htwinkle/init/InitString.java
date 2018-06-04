@@ -12,6 +12,8 @@ public class InitString {
 
     public static final int CountDownInterval_ = 1000; //计时器时间跳转间隔
 
+    public static final int REQUEST_CODE = 10003;  //回调id
+
     public static final int[] my_menu_user_icon = {0, R.drawable.user, R.drawable.coll, R.drawable.dra};
 
     public static final int[] my_menu_jwgl_icon = {0, R.drawable.info, R.drawable.jwgl_ttb, R.drawable.jwgl_score};

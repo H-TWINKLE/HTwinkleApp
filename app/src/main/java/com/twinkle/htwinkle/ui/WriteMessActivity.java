@@ -1,11 +1,16 @@
 package com.twinkle.htwinkle.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.Html;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -31,9 +36,15 @@ import org.xutils.x;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.twinkle.htwinkle.init.InitString.REQUEST_CODE;
+
 @ContentView(R.layout.activity_write_mess)
 public class WriteMessActivity extends TakePhotoActivity {
     private static final String TAG = "WriteMessActivity";
+
+
+    @ViewInject(value = R.id.wMess_iv_cTopic)
+    private ImageView wMess_iv_cTopic;
 
     @ViewInject(value = R.id.wMess_iv_back)
     private ImageView wMess_iv_back;
@@ -69,18 +80,30 @@ public class WriteMessActivity extends TakePhotoActivity {
         getTakePhoto().onPickMultipleWithCrop(9, new CropOptions.Builder().setAspectX(800).setAspectY(800).setWithOwnCrop(true).create());
     }
 
+    @Event(value = R.id.wMess_iv_cTopic)
+    private void onCTopicClick(View view) {
+        createTopicDialog();
+    }
+
     @Event(value = R.id.wMess_iv_cLocal)
     private void onCLocalClick(View view) {
+        Intent i = new Intent(this, TopicActivity.class);
+        startActivityForResult(i, REQUEST_CODE);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == REQUEST_CODE) {
+            wMess_tv_local.setText(data.getStringExtra("local"));
+        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         x.view().inject(this);
-
         initData();
-
         initView();
     }
 
@@ -139,6 +162,30 @@ public class WriteMessActivity extends TakePhotoActivity {
             }
         });
 
+    }
+
+
+    private void createTopicDialog() {
+
+        final AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle(R.string.choose_topic)
+                .setCancelable(true).setItems(R.array.topics, (d, p) -> {
+
+                    addText(getResources().getStringArray(R.array.topics)[p]);
+
+                }).setNegativeButton(R.string.cancel, null).create();
+
+        dialog.show();
+
+    }
+
+    private void addText(String text) {
+
+        wMess_et_mess.getText().append(colorText(text));
+    }
+
+    private Spanned colorText(String text) {
+        return Html.fromHtml(String.format("<font color='#1f6394'> #%1$s# </font>", text));
     }
 
 

@@ -79,6 +79,7 @@
     <!--main_index页面-->
     <string name="lyric">不敢回看 左顾右盼不自然的暗自喜欢 偷偷搭讪总没完地坐立难安 试探说晚安 多空泛又心酸
         低头呢喃 对你的偏爱太过于明目张胆 在原地打转的小丑伤心不断 空空留遗憾 多难堪又为难 释然 慵懒 尽欢 </string>
+    <string name="lv">LV5</string>
 
     <!--main_news-->
     <string name="received_comm">收到的评论</string>
@@ -88,6 +89,21 @@
 
     <!--writeMess页面-->
     <string name="text">你想说点什么</string>
+    <string name="choose_topic">选择话题</string>
+    <string name="cancel">取消</string>
+
+    <string-array name="topics">
+        <item>个人吐槽</item>
+        <item>学业求助</item>
+        <item>物品丢失</item>
+        <item>二手市场</item>
+        <item>实时讯息</item>
+        <item>专业课程</item>
+        <item>灌水讨论</item>
+    </string-array>
+
+    <!--topic页面-->
+    <string name="topic">你想去哪儿</string>
 
 
 </resources>

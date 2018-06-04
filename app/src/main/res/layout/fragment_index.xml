@@ -7,11 +7,19 @@
     tools:context=".ui.IndexFragment">
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_index_rv"
+    <com.twinkle.htwinkle.yalantis.OwnPullToRefreshView
+        android:id="@+id/main_index_pv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/index_content"/>
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/main_index_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/index_content"/>
+
+    </com.twinkle.htwinkle.yalantis.OwnPullToRefreshView>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/main_index_fab"
