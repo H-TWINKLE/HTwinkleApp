@@ -122,9 +122,11 @@ public class IndexFragment extends Fragment {
 
     private View initRvHeader2() {
 
+        String array[] = getResources().getStringArray(R.array.topics);
+
         List<IndexTypes> list = new ArrayList<>();
-        for (int s = 0; s < InitString.my_types_title.length; s++) {
-            list.add(new IndexTypes(InitString.my_types_icon[s], InitString.my_types_title[s]));
+        for (int s = 0; s < InitString.my_types_icon.length; s++) {
+            list.add(new IndexTypes(InitString.my_types_icon[s], array[s]));
         }
 
         View view = LayoutInflater.from(main_index_rv.getContext()).inflate(R.layout.header_index_types, main_index_rv, false);

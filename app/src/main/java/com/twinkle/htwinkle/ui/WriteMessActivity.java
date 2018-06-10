@@ -33,6 +33,7 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,8 +41,8 @@ import static com.twinkle.htwinkle.init.InitString.REQUEST_CODE;
 
 @ContentView(R.layout.activity_write_mess)
 public class WriteMessActivity extends TakePhotoActivity {
-    private static final String TAG = "WriteMessActivity";
 
+    private List<TImage> list;
 
     @ViewInject(value = R.id.wMess_iv_cTopic)
     private ImageView wMess_iv_cTopic;
@@ -69,6 +70,11 @@ public class WriteMessActivity extends TakePhotoActivity {
 
     @ViewInject(value = R.id.wMess_iv_cLocal)
     private ImageView wMess_iv_cLocal;
+
+    @Event(value = R.id.wMess_iv_send)
+    private void onSendClick(View view) {
+        deleteCacheFile();
+    }
 
     @Event(value = R.id.wMess_iv_back)
     private void onBackClick(View view) {
@@ -146,6 +152,8 @@ public class WriteMessActivity extends TakePhotoActivity {
     }
 
     private void initRv(List<TImage> list) {
+         this.list = list;
+
         wMess_rv_img.setLayoutManager(new GridLayoutManager(WriteMessActivity.this, 3));
 
         WMessIvAdapter adapter = new WMessIvAdapter(R.layout.base_imageview, list);
@@ -161,6 +169,16 @@ public class WriteMessActivity extends TakePhotoActivity {
                     break;
             }
         });
+
+    }
+
+    private void deleteCacheFile(){
+
+        if(list==null)return ;
+
+        for(TImage path:list){
+            new File(path.getOriginalPath()).delete();
+        }
 
     }
 

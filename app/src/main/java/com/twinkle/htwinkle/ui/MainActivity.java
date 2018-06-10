@@ -2,6 +2,9 @@ package com.twinkle.htwinkle.ui;
 
 import android.app.Activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -27,6 +30,7 @@ import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.base.BaseActivity;
 import com.twinkle.htwinkle.bean.ViewTypes;
 import com.twinkle.htwinkle.init.InitString;
+import com.twinkle.htwinkle.init.InitUtils;
 
 import org.xutils.view.annotation.ViewInject;
 
@@ -143,6 +147,11 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
             if (x == 0) {
                 viewTypes.setType(3);
                 viewTypes.setMenuTitle(eol[x]);
+            } else if (x == 2) {
+                viewTypes.setNewTip(true);
+                viewTypes.setType(1);
+                viewTypes.setMenuTitle(eol[x]);
+                viewTypes.setMenuIcon(InitString.my_menu_eol_icon[x]);
             } else {
                 viewTypes.setType(1);
                 viewTypes.setMenuTitle(eol[x]);
@@ -179,7 +188,14 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         headerAndFooterAdapter.addHeaderView(setHeader1());
         headerAndFooterAdapter.addHeaderView(setHeader2());
         headerAndFooterAdapter.setOnItemClickListener(
-                (a, v, p) -> Toast.makeText(this, p + "  :title", Toast.LENGTH_SHORT).show());
+                (a, v, p) -> {
+                    // Toast.makeText(this, p + "", Toast.LENGTH_SHORT).show();
+                    if (list.size() - 1 == p) {
+                        showDialog();
+                    }else if(list.size() - 2 == p){
+                        startActivity(new Intent(this,SettingsActivity.class));
+                    }
+                });
 
         main_side_rv.setAdapter(headerAndFooterAdapter);
     }
@@ -245,4 +261,21 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
     public void onPageScrollStateChanged(int state) {
 
     }
+
+    private void showDialog() {
+
+        new AlertDialog.Builder(this)
+                .setMessage(R.string.login_out_tip)
+                .setNegativeButton(R.string.negative, null)
+                .setPositiveButton(R.string.positive, (d, w) -> {
+                    InitUtils.INSTANCE.UserLoginOut(this);
+                    finish();
+                    startActivity(new Intent(this, LoginActivity.class));
+                })
+                .create()
+                .show();
+
+    }
+
+
 }

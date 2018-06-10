@@ -20,7 +20,7 @@ public class InitString {
 
     public static final int[] my_menu_eol_icon = {0, R.drawable.info, R.drawable.eol_work};
 
-    public static final int[] my_menu_setting_icon = {0, R.drawable.theme, R.drawable.setting, R.drawable.logout};
+    public static final int[] my_menu_setting_icon = {0, R.drawable.setting, R.drawable.logout};
 
     public static final String[] my_pic_url = {
             "http://pic.3gbizhi.com/2016/1226/20161226023553245.jpg",

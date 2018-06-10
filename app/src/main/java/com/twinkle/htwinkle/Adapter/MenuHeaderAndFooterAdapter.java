@@ -1,5 +1,7 @@
 package com.twinkle.htwinkle.Adapter;
 
+import android.view.View;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
@@ -32,6 +34,10 @@ public class MenuHeaderAndFooterAdapter extends BaseQuickAdapter<ViewTypes, Base
             case ViewTypes.Title_TYPE:
                 helper.setText(R.id.main_side_tv_title, item.getMenuTitle());
                 helper.setImageResource(R.id.main_side_iv_icon,item.getMenuIcon());
+                if(item.getNewTip()){
+                    View view = helper.getView(R.id.main_side_iv_newTip);
+                    view.setVisibility(View.VISIBLE);
+                }
                 break;
             case ViewTypes.Div_TYPE:
                 break;

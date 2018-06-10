@@ -1,0 +1,37 @@
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <header
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="@string/pref_header_general" />
+
+
+    <header
+        android:fragment="com.twinkle.htwinkle.ui.SettingsActivity$GeneralPreferenceFragment"
+        android:icon="@drawable/ic_menu_black_24dp"
+        android:title="@string/pref_header_menu" />
+
+    <header
+        android:fragment="com.twinkle.htwinkle.ui.SettingsActivity$NotificationPreferenceFragment"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="@string/pref_header_notifications" />
+
+    <header
+        android:fragment="com.twinkle.htwinkle.ui.SettingsActivity$DataSyncPreferenceFragment"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:title="@string/pref_header_data_sync" />
+
+    <header
+        android:icon="@drawable/ic_layers_clear_black_24dp"
+        android:title="@string/pref_header_clear_data" />
+
+    <header
+        android:icon="@drawable/ic_system_update_black_24dp"
+        android:title="@string/pref_header_check_update" />
+
+    <header
+        android:fragment="com.twinkle.htwinkle.ui.SettingsActivity$NewVersionPreferenceFragment"
+        android:icon="@drawable/ic_apps_black_24dp"
+        android:title="@string/pref_header_app" />
+
+
+</preference-headers>

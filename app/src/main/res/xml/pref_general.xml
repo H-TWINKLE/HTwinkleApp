@@ -1,0 +1,30 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="setting_jwgl"
+        android:title="@string/pref_title_jwgl" />
+
+    <!--<ListPreference-->
+       <!--android:dependency="setting_jwgl"-->
+        <!--android:key="pref_title_jwgl_child"-->
+        <!--android:entries="@array/my_menu_jwgl"-->
+        <!--/>-->
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="setting_eol"
+        android:title="@string/pref_title_eol" />
+
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="setting_one_day"
+        android:title="@string/pref_title_one_day" />
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="setting_tools"
+        android:title="@string/pref_title_tools" />
+
+</PreferenceScreen>

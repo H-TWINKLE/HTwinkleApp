@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Htwinkle</string>
+    <string name="app_name">校园BBS</string>
+    <string name="version">version - %1$d</string>
 
     <!--Welcome页面-->
     <string name="skip">跳过</string>
@@ -41,6 +42,10 @@
     <string name="my_lv">LV5</string>
     <string name="my_focus">我的关注</string>
     <string name="my_fans">我的粉丝</string>
+    <string name="login_out">注销</string>
+    <string name="login_out_tip">确定退出当前账户？</string>
+    <string name="positive">确定</string>
+    <string name="negative">取消</string>
 
     <string-array name="my_menu_user">
         <item>我的</item>
@@ -64,7 +69,6 @@
 
     <string-array name="my_menu_setting">
         <item>设置</item>
-        <item>主题</item>
         <item>设置</item>
         <item>注销</item>
     </string-array>
@@ -99,11 +103,97 @@
         <item>二手市场</item>
         <item>实时讯息</item>
         <item>专业课程</item>
+        <item>休闲娱乐</item>
         <item>灌水讨论</item>
     </string-array>
 
     <!--topic页面-->
     <string name="topic">你想去哪儿</string>
+
+    <!--progress-->
+    <string name="is_progress">正在加载</string>
+    <string name="title_activity_settings">设置</string>
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">个人信息及账号设置</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_header_data_sync">同步</string>
+
+    <string name="pref_header_check_update">检查新版本</string>
+    <string name="pref_header_clear_data">清除缓存</string>
+    <string name="pref_header_app">关于我们</string>
+
+    <string name="pref_title_sync_frequency">同步频率</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>30 秒</item>
+        <item>1 分钟</item>
+        <item>3 分钟</item>
+        <item>10 分钟</item>
+        <item>1 小时</item>
+        <item>永不同步</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>600</item>
+        <item>3600</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">系统同步设置</string>
+
+    <string name="pref_header_notifications">消息提醒设置</string>
+    <string name="pref_header_menu">首页菜单显示</string>
+    <string name="pref_title_new_message_notifications">新消息</string>
+    <string name="pref_title_ringtone">铃声</string>
+    <string name="pref_ringtone_silent">响铃</string>
+    <string name="pref_title_vibrate">震动</string>
+
+    <string name="pref_title_jwgl">教务管理系统</string>
+    <string name="pref_title_eol">网络教学平台</string>
+    <string name="pref_title_one_day">每日推荐</string>
+    <string name="pref_title_tools">小助手</string>
+
+    <string name="clear_cache_success">清除缓存成功</string>
+    <string name="clear_cache_failure">清除缓存失败</string>
+
+    <string name="check_version_is_newer">您已安装最新版本！</string>
+    <string name="red_point">小红点</string>
 
 
 </resources>

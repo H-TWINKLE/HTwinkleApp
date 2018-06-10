@@ -11,8 +11,10 @@ import android.widget.Toast;
 
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.base.BaseActivity;
+import com.twinkle.htwinkle.dialog.MyDialog;
 import com.twinkle.htwinkle.bean.User;
 import com.twinkle.htwinkle.bmob.Bmob;
+import com.twinkle.htwinkle.init.InitUtils;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -21,6 +23,8 @@ import static com.twinkle.htwinkle.init.InitString.*;
 
 public class LoginActivity extends BaseActivity implements Bmob.LoginListener {
 
+
+    private MyDialog myDialog;
 
     @ViewInject(value = R.id.login_iv_header)
     private ImageView login_iv_header;
@@ -41,6 +45,10 @@ public class LoginActivity extends BaseActivity implements Bmob.LoginListener {
         String pass = login_et_pass.getText().toString();
 
         if (checkLogin(tel, pass)) {
+
+            myDialog = new MyDialog(this,R.style.AlertDialog);
+            myDialog.show();
+
             Bmob.INSTANCE.setLoginListener(this);
             Bmob.INSTANCE.BmobLogin(tel, pass);
         }
@@ -94,7 +102,7 @@ public class LoginActivity extends BaseActivity implements Bmob.LoginListener {
 
     @Override
     public void initView() {
-
+      getUser();
     }
 
     @Override
@@ -102,14 +110,25 @@ public class LoginActivity extends BaseActivity implements Bmob.LoginListener {
 
     }
 
+    private void getUser() {
+
+        User user = InitUtils.INSTANCE.remUser(this);
+        login_et_tel.setText(user.getUsername());
+        login_et_pass.setText(user.getPassWord());
+
+    }
+
     @Override
     public void LoginSuccess(User user) {
-      startActivity(new Intent(this,MainActivity.class));
-      this.finish();
+        myDialog.dismiss();
+        InitUtils.INSTANCE.saveUser(this, user.getUsername(), user.getPassWord());
+        startActivity(new Intent(this, MainActivity.class));
+        this.finish();
     }
 
     @Override
     public void LoginFailure(String text) {
+        myDialog.dismiss();
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 }

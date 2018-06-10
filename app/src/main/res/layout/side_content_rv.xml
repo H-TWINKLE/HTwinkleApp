@@ -27,4 +27,25 @@
         android:layout_marginStart="10dp"
         tools:text="setting" />
 
+
+    <LinearLayout
+        android:gravity="end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/newtip"
+            android:layout_gravity="center|end"
+            android:id="@+id/main_side_iv_newTip"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:contentDescription="@null"
+             />
+
+    </LinearLayout>
+
+
+
 </LinearLayout>

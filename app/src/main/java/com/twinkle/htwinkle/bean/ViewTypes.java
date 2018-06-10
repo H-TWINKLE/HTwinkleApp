@@ -10,6 +10,11 @@ public class ViewTypes {
     private Integer type;
     private String menuTitle;
     private int menuIcon;
+    private  boolean newTip;
+
+    {
+        newTip = false;
+    }
 
     public ViewTypes(Integer type) {
         this.type = type;
@@ -40,6 +45,14 @@ public class ViewTypes {
 
     public void setMenuIcon(int menuIcon) {
         this.menuIcon = menuIcon;
+    }
+
+    public boolean getNewTip() {
+        return newTip;
+    }
+
+    public void setNewTip(boolean newTip) {
+        this.newTip = newTip;
     }
 }
 

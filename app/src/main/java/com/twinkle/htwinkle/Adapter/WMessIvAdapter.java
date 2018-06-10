@@ -1,5 +1,6 @@
 package com.twinkle.htwinkle.Adapter;
 
+import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,7 +26,9 @@ public class WMessIvAdapter extends BaseQuickAdapter<TImage, BaseViewHolder> {
 
         ImageView view = helper.getView(R.id.wMess_rv_base_iv);
 
-        x.image().bind(view,item.getOriginalPath(),new ImageOptions.Builder().setIgnoreGif(false).build());
+        x.image().bind(view,item.getOriginalPath(),new ImageOptions.Builder().setIgnoreGif(true).setLoadingDrawableId(R.drawable.load).build());
+
+
 
         helper.addOnClickListener(R.id.wMess_rv_base_iv_del);
 
