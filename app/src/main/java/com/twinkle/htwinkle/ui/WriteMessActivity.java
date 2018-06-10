@@ -182,7 +182,6 @@ public class WriteMessActivity extends TakePhotoActivity {
 
     }
 
-
     private void createTopicDialog() {
 
         final AlertDialog dialog = new AlertDialog.Builder(this)
