@@ -4,15 +4,15 @@
     <solid android:color="@android:color/transparent" />
     <!-- 边框 -->
     <stroke
-        android:width="2dp"
+        android:width="1dp"
         android:color="@android:color/holo_red_dark" />
     <!-- 圆角 -->
-    <corners android:radius="3dp" />
+    <corners android:radius="10dp" />
     <!-- 边距 -->
     <padding
         android:bottom="2dp"
-        android:left="2dp"
-        android:right="2dp"
+        android:left="5dp"
+        android:right="5dp"
         android:top="2dp" />
     <!-- 渐变 -->
 

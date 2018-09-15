@@ -2,11 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="130dp"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorPrimary">
 
 
-    <ImageView
+    <com.loopj.android.image.SmartImageView
         android:id="@+id/main_header_iv_head"
         android:layout_width="60dp"
         android:layout_height="60dp"
@@ -16,48 +15,48 @@
         android:src="@drawable/logo" />
 
     <LinearLayout
-        android:layout_marginStart="10dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center|start">
+        android:layout_marginStart="10dp"
+        android:gravity="center|start"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:gravity="center|start"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center|start">
 
             <TextView
-                android:textSize="15sp"
-                android:textColor="@color/colorBlack"
-                android:textStyle="bold"
+                android:id="@+id/main_header_tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="@string/my_news" />
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:textStyle="bold"
+                android:id="@+id/main_header_tv_lv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/index_border_lv"
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
-                android:background="@drawable/menu_border_lv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="@string/my_lv" />
+                android:textStyle="bold" />
 
 
         </LinearLayout>
 
         <TextView
-            android:singleLine="true"
-            android:ellipsize="end"
-            android:layout_marginTop="20dp"
+            android:id="@+id/main_header_tv_auto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="@string/my_say" />
-
+            android:layout_marginTop="20dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="12sp" />
 
     </LinearLayout>
 

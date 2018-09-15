@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.IndexFragment">
+    tools:context=".ui.FragmentIndex">
 
-
-    <com.twinkle.htwinkle.yalantis.OwnPullToRefreshView
-        android:id="@+id/main_index_pv"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/main_index_srl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -16,9 +15,10 @@
             android:id="@+id/main_index_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/index_content"/>
+            tools:listitem="@layout/index_content" />
 
-    </com.twinkle.htwinkle.yalantis.OwnPullToRefreshView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 
     <android.support.design.widget.FloatingActionButton

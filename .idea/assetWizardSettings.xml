@@ -16,31 +16,9 @@
                             <entry key="launcher">
                               <value>
                                 <PersistentState>
-                                  <option name="children">
-                                    <map>
-                                      <entry key="foregroundImage">
-                                        <value>
-                                          <PersistentState>
-                                            <option name="values">
-                                              <map>
-                                                <entry key="scalingPercent" value="66" />
-                                              </map>
-                                            </option>
-                                          </PersistentState>
-                                        </value>
-                                      </entry>
-                                    </map>
-                                  </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="0c91e4" />
-                                      <entry key="backgroundImage" value="E:\TWINKLE\Desktop\icon.png" />
-                                      <entry key="foregroundImage" value="E:\TWINKLE\Desktop\icons.png" />
-                                      <entry key="foregroundLayerName" value="ic_launcher_foregrounds" />
-                                      <entry key="legacyIconShape" value="NONE" />
-                                      <entry key="previewDensity" value="MEDIUM" />
-                                      <entry key="webIconShape" value="NONE" />
+                                      <entry key="foregroundImage" value="E:\TWINKLE\Desktop\icon.png" />
                                     </map>
                                   </option>
                                 </PersistentState>

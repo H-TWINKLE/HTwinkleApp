@@ -3,6 +3,7 @@ package com.twinkle.htwinkle.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,17 +14,19 @@ import com.twinkle.htwinkle.base.BaseActivity;
 import com.twinkle.htwinkle.bean.User;
 import com.twinkle.htwinkle.bmob.Bmob;
 
-import static com.twinkle.htwinkle.init.InitString.*;
+import static com.twinkle.htwinkle.init.Constant.*;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
 
-public class SetPassActivity extends BaseActivity implements Bmob.RegisterListener, Bmob.ModifyPassListener {
+public class SetPassActivity extends BaseActivity implements Bmob.RegisterListener, Bmob.ModifyPassWithoutLoginListener {
 
     private int code;
 
     private String tel;
+
+    private User user;
 
     @ViewInject(value = R.id.sp_et_pass1)
     private EditText sp_et_pass1;
@@ -61,8 +64,8 @@ public class SetPassActivity extends BaseActivity implements Bmob.RegisterListen
     }
 
     private void modifyListener(String pass) {
-        Bmob.INSTANCE.setModifyPassListener(this);
-        Bmob.INSTANCE.BmobModifyPass(pass, SetPassActivity.this);
+        Bmob.INSTANCE.setModifyPassWithoutLoginListener(this);
+        Bmob.INSTANCE.BmobModifyPassWithoutLogin(user, pass);
     }
 
 
@@ -105,6 +108,7 @@ public class SetPassActivity extends BaseActivity implements Bmob.RegisterListen
     public void initData() {
         code = getIntent().getIntExtra("flag", Default_Int);
         tel = getIntent().getStringExtra("tel");
+        user = (User)getIntent().getSerializableExtra("user");
 
         switch (code) {
             case Register_:
@@ -132,13 +136,14 @@ public class SetPassActivity extends BaseActivity implements Bmob.RegisterListen
     }
 
     @Override
-    public void ModifyPassSuccess(String text) {
+    public void ModifyPassWithoutLoginSuccess() {
+        Toast.makeText(SetPassActivity.this, getString(R.string.modify_pass_success), Toast.LENGTH_SHORT).show();
         finish();
         startActivity(new Intent(SetPassActivity.this, LoginActivity.class));
     }
 
     @Override
-    public void ModifyPassFailure(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    public void ModifyPassWithoutLoginFailure(String text) {
+        Toast.makeText(SetPassActivity.this, text, Toast.LENGTH_SHORT).show();
     }
 }

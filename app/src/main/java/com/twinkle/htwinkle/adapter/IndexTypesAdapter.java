@@ -1,4 +1,4 @@
-package com.twinkle.htwinkle.Adapter;
+package com.twinkle.htwinkle.adapter;
 
 import android.support.annotation.Nullable;
 

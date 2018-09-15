@@ -2,9 +2,12 @@ package com.twinkle.htwinkle.app;
 
 import android.app.Application;
 
+import com.twinkle.htwinkle.init.Constant;
+
 import org.xutils.x;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobConfig;
 
 public class MyApp extends Application {
 
@@ -16,7 +19,7 @@ public class MyApp extends Application {
 
         x.Ext.setDebug(false);
 
-        Bmob.initialize(this, "efcec7fdecd3aefe199792559b33bf1b");
+        Bmob.initialize(this, Constant.BOMBKEY);
 
     }
 }

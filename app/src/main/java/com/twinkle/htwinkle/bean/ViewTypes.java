@@ -23,6 +23,11 @@ public class ViewTypes {
     public ViewTypes() {
     }
 
+    public ViewTypes(Integer type, String menuTitle) {
+        this.type = type;
+        this.menuTitle = menuTitle;
+    }
+
     public Integer getType() {
         return type;
     }

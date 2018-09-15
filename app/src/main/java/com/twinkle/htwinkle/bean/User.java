@@ -6,13 +6,13 @@ import cn.bmob.v3.BmobUser;
 
 public class User extends BmobUser {
 
-    private Integer jwglId;
+    private String jwgl;
 
-    private Integer eolId;
+    private String eol;
 
     private String nickName;
 
-    private Integer sex;
+    private String sex;
 
     private String auto;
 
@@ -20,9 +20,13 @@ public class User extends BmobUser {
 
     private String headerPic;
 
+    private String schoolId;
+
     private List<User> focus;
 
     private List<User> fans;
+
+    private String lv;
 
     private User(Builder builder) {
         setObjectId(builder.objectId);
@@ -35,31 +39,34 @@ public class User extends BmobUser {
         setSessionToken(builder.sessionToken);
         setMobilePhoneNumber(builder.mobilePhoneNumber);
         setMobilePhoneNumberVerified(builder.mobilePhoneNumberVerified);
-        setJwglId(builder.jwglId);
-        setEolId(builder.eolId);
+        setJwgl(builder.jwgl);
+        setEol(builder.eol);
         setNickName(builder.nickName);
         setSex(builder.sex);
         setAuto(builder.auto);
         setPassWord(builder.passWord);
         setHeaderPic(builder.headerPic);
+        setSchoolId(builder.schoolId);
         setFocus(builder.focus);
         setFans(builder.fans);
+        setLv(builder.lv);
     }
 
-    public Integer getJwglId() {
-        return jwglId;
+
+    public String getJwgl() {
+        return jwgl;
     }
 
-    public void setJwglId(Integer jwglId) {
-        this.jwglId = jwglId;
+    public void setJwgl(String jwgl) {
+        this.jwgl = jwgl;
     }
 
-    public Integer getEolId() {
-        return eolId;
+    public String getEol() {
+        return eol;
     }
 
-    public void setEolId(Integer eolId) {
-        this.eolId = eolId;
+    public void setEol(String eol) {
+        this.eol = eol;
     }
 
     public String getNickName() {
@@ -70,11 +77,11 @@ public class User extends BmobUser {
         this.nickName = nickName;
     }
 
-    public Integer getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Integer sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
@@ -102,6 +109,14 @@ public class User extends BmobUser {
         this.headerPic = headerPic;
     }
 
+    public String getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(String schoolId) {
+        this.schoolId = schoolId;
+    }
+
     public List<User> getFocus() {
         return focus;
     }
@@ -118,6 +133,13 @@ public class User extends BmobUser {
         this.fans = fans;
     }
 
+    public String getLv() {
+        return lv;
+    }
+
+    public void setLv(String lv) {
+        this.lv = lv;
+    }
 
     public static final class Builder {
         private String objectId;
@@ -130,15 +152,17 @@ public class User extends BmobUser {
         private String sessionToken;
         private String mobilePhoneNumber;
         private Boolean mobilePhoneNumberVerified;
-        private Integer jwglId;
-        private Integer eolId;
+        private String jwgl;
+        private String eol;
         private String nickName;
-        private Integer sex;
+        private String sex;
         private String auto;
         private String passWord;
         private String headerPic;
+        private String schoolId;
         private List<User> focus;
         private List<User> fans;
+        private String lv;
 
         public Builder() {
         }
@@ -193,13 +217,13 @@ public class User extends BmobUser {
             return this;
         }
 
-        public Builder jwglId(Integer val) {
-            jwglId = val;
+        public Builder jwgl(String val) {
+            jwgl = val;
             return this;
         }
 
-        public Builder eolId(Integer val) {
-            eolId = val;
+        public Builder eol(String val) {
+            eol = val;
             return this;
         }
 
@@ -208,7 +232,7 @@ public class User extends BmobUser {
             return this;
         }
 
-        public Builder sex(Integer val) {
+        public Builder sex(String val) {
             sex = val;
             return this;
         }
@@ -228,6 +252,11 @@ public class User extends BmobUser {
             return this;
         }
 
+        public Builder schoolId(String val) {
+            schoolId = val;
+            return this;
+        }
+
         public Builder focus(List<User> val) {
             focus = val;
             return this;
@@ -235,6 +264,11 @@ public class User extends BmobUser {
 
         public Builder fans(List<User> val) {
             fans = val;
+            return this;
+        }
+
+        public Builder lv(String val) {
+            lv = val;
             return this;
         }
 

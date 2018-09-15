@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,17 +15,20 @@ import com.alibaba.fastjson.JSONObject;
 import com.mob.MobSDK;
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.base.BaseActivity;
+import com.twinkle.htwinkle.bean.User;
 import com.twinkle.htwinkle.bmob.Bmob;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
+import java.util.List;
 import java.util.Locale;
 
+import cn.bmob.v3.BmobUser;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
-import static com.twinkle.htwinkle.init.InitString.*;
+import static com.twinkle.htwinkle.init.Constant.*;
 
 public class RegOrForActivity extends BaseActivity implements Bmob.CheckUserListener {
 
@@ -33,6 +37,8 @@ public class RegOrForActivity extends BaseActivity implements Bmob.CheckUserList
     private boolean isSendTel;
 
     private String tel;
+
+    private User user;
 
     @ViewInject(value = R.id.rf_tv_tipIsSend)
     private TextView rf_tv_tipIsSend;
@@ -228,23 +234,25 @@ public class RegOrForActivity extends BaseActivity implements Bmob.CheckUserList
         Intent intent = new Intent(RegOrForActivity.this, SetPassActivity.class);
         intent.putExtra("flag", code);
         intent.putExtra("tel", tel);
+        intent.putExtra("user", user);
         startActivity(intent);
         this.finish();
     }
 
 
     @Override
-    public void CheckUserSuccess(int size) {
+    public void CheckUserSuccess(List<User> object) {
         switch (code) {
             case Modify_Pass:
-                if (size > 0) {
+                if (object.size() != 0) {
                     sendCode(tel);
+                    user = object.get(0);
                 } else {
                     Toast.makeText(this, getString(R.string.user_not_reg), Toast.LENGTH_SHORT).show();
                 }
                 break;
             case Register_:
-                if (size > 0) {
+                if (object.size() != 0) {
                     Toast.makeText(this, getString(R.string.user_reg), Toast.LENGTH_SHORT).show();
                 } else {
                     sendCode(tel);

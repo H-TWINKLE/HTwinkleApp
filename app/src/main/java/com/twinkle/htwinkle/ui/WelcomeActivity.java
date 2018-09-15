@@ -1,9 +1,11 @@
 package com.twinkle.htwinkle.ui;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +20,12 @@ import org.xutils.view.annotation.ViewInject;
 import java.util.Locale;
 
 import cn.bmob.v3.BmobUser;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.OnShowRationale;
+import permissions.dispatcher.PermissionRequest;
+import permissions.dispatcher.RuntimePermissions;
 
+@RuntimePermissions
 public class WelcomeActivity extends BaseActivity {
 
     @ViewInject(value = R.id.wel_cl)
@@ -97,5 +104,15 @@ public class WelcomeActivity extends BaseActivity {
             startActivity(new Intent(WelcomeActivity.this, LoginActivity.class)); //缓存用户对象为空时， 可打开用户注册界面…
         }
         finish();
+    }
+
+    @NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
+    void onRun() {
+    }
+
+
+
+    @OnShowRationale({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
+    void onRunShow(final PermissionRequest request) {
     }
 }

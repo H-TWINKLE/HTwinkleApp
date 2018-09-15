@@ -51,6 +51,7 @@
         <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.login" />
+
                 <category android:name="android.intent.category.login" />
             </intent-filter>
         </activity>
@@ -63,6 +64,7 @@
             android:name=".ui.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/Theme.AppCompat.Light" />
+        <activity android:name=".ui.InfoActivity" />
     </application>
 
 </manifest>

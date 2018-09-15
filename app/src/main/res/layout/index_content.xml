@@ -18,7 +18,7 @@
             android:gravity="center|start"
             android:padding="10dp">
 
-            <ImageView
+            <com.loopj.android.image.SmartImageView
                 android:id="@+id/index_cr_iv_header"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -62,7 +62,6 @@
                     android:background="@drawable/index_border_lv"
                     android:textColor="#060606"
                     android:textSize="12sp"
-                    android:textStyle="bold"
                      />
             </LinearLayout>
 
@@ -75,7 +74,7 @@
             android:orientation="vertical"
             android:padding="5dp">
 
-            <ImageView
+            <com.loopj.android.image.SmartImageView
                 android:id="@+id/index_cr_iv_pic"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"

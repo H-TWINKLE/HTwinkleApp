@@ -1,12 +1,14 @@
 package com.twinkle.htwinkle.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,14 +17,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 
-import com.twinkle.htwinkle.Adapter.GlideImageLoader;
-import com.twinkle.htwinkle.Adapter.HidingScrollListener;
-import com.twinkle.htwinkle.Adapter.IndexAdapter;
-import com.twinkle.htwinkle.Adapter.IndexTypesAdapter;
+import com.twinkle.htwinkle.adapter.GlideImageLoader;
+import com.twinkle.htwinkle.adapter.HidingScrollListener;
+import com.twinkle.htwinkle.adapter.IndexAdapter;
+import com.twinkle.htwinkle.adapter.IndexTypesAdapter;
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.bean.IndexTypes;
-import com.twinkle.htwinkle.init.InitString;
-import com.twinkle.htwinkle.yalantis.OwnPullToRefreshView;
+import com.twinkle.htwinkle.init.Constant;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -38,10 +39,10 @@ import java.util.Objects;
 
 
 @ContentView(R.layout.fragment_index)
-public class IndexFragment extends Fragment {
+public class FragmentIndex extends Fragment {
 
-    @ViewInject(value = R.id.main_index_pv)
-    private OwnPullToRefreshView main_index_pv;
+    @ViewInject(value = R.id.main_index_srl)
+    private SwipeRefreshLayout main_index_srl;
 
 
     private BottomNavigationView main_bnv;
@@ -55,7 +56,7 @@ public class IndexFragment extends Fragment {
 
     private Banner main_bn_header;
 
-    public IndexFragment() {
+    public FragmentIndex() {
 
     }
 
@@ -112,11 +113,8 @@ public class IndexFragment extends Fragment {
 
     private void initPv(){
 
-        main_index_pv.setOnRefreshListener(()->{
-            main_index_pv.postDelayed(()->{
-                main_index_pv.setRefreshing(false);
-            },3000);
-        });
+        main_index_srl.setColorSchemeColors(Color.rgb(47, 223, 189));
+        main_index_srl.setOnRefreshListener(()-> main_index_srl.postDelayed(()-> main_index_srl.setRefreshing(false), 3000));
 
     }
 
@@ -125,8 +123,8 @@ public class IndexFragment extends Fragment {
         String array[] = getResources().getStringArray(R.array.topics);
 
         List<IndexTypes> list = new ArrayList<>();
-        for (int s = 0; s < InitString.my_types_icon.length; s++) {
-            list.add(new IndexTypes(InitString.my_types_icon[s], array[s]));
+        for (int s = 0; s < Constant.my_types_icon.length; s++) {
+            list.add(new IndexTypes(Constant.my_types_icon[s], array[s]));
         }
 
         View view = LayoutInflater.from(main_index_rv.getContext()).inflate(R.layout.header_index_types, main_index_rv, false);
@@ -159,9 +157,9 @@ public class IndexFragment extends Fragment {
         main_bn_header = view.findViewById(R.id.main_bn_header);
         main_bn_header.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);//设置banner样式
         main_bn_header.setImageLoader(new GlideImageLoader());//设置图片加载器
-        main_bn_header.setImages(Arrays.asList(InitString.my_pic_url)); //设置图片集合
+        main_bn_header.setImages(Arrays.asList(Constant.my_pic_url)); //设置图片集合
         main_bn_header.setBannerAnimation(Transformer.DepthPage);//设置banner动画效果
-        main_bn_header.setBannerTitles(Arrays.asList(InitString.my_pic_title));//设置标题集合（当banner样式有显示title时）
+        main_bn_header.setBannerTitles(Arrays.asList(Constant.my_pic_title));//设置标题集合（当banner样式有显示title时）
         main_bn_header.isAutoPlay(true);//设置自动轮播，默认为true
         main_bn_header.setDelayTime(3000); //设置轮播时间
         main_bn_header.setIndicatorGravity(BannerConfig.CENTER);//设置指示器位置（当banner模式中有指示器时）

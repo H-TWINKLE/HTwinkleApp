@@ -21,7 +21,7 @@ import org.xutils.view.annotation.ViewInject;
 
 import java.util.List;
 
-import static com.twinkle.htwinkle.init.InitString.REQUEST_CODE;
+import static com.twinkle.htwinkle.init.Constant.REQUEST_CODE;
 
 public class TopicActivity extends BaseActivity implements Inputtips.InputtipsListener {
 

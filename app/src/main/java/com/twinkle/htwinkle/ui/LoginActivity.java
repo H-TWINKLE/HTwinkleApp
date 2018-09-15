@@ -14,12 +14,12 @@ import com.twinkle.htwinkle.base.BaseActivity;
 import com.twinkle.htwinkle.dialog.MyDialog;
 import com.twinkle.htwinkle.bean.User;
 import com.twinkle.htwinkle.bmob.Bmob;
-import com.twinkle.htwinkle.init.InitUtils;
+import com.twinkle.htwinkle.init.Utils;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
-import static com.twinkle.htwinkle.init.InitString.*;
+import static com.twinkle.htwinkle.init.Constant.*;
 
 public class LoginActivity extends BaseActivity implements Bmob.LoginListener {
 
@@ -112,7 +112,7 @@ public class LoginActivity extends BaseActivity implements Bmob.LoginListener {
 
     private void getUser() {
 
-        User user = InitUtils.INSTANCE.remUser(this);
+        User user = Utils.INSTANCE.remUser(this);
         login_et_tel.setText(user.getUsername());
         login_et_pass.setText(user.getPassWord());
 
@@ -121,7 +121,7 @@ public class LoginActivity extends BaseActivity implements Bmob.LoginListener {
     @Override
     public void LoginSuccess(User user) {
         myDialog.dismiss();
-        InitUtils.INSTANCE.saveUser(this, user.getUsername(), user.getPassWord());
+        Utils.INSTANCE.saveUser(this, user.getUsername(), user.getPassWord());
         startActivity(new Intent(this, MainActivity.class));
         this.finish();
     }

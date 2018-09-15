@@ -1,4 +1,4 @@
-package com.twinkle.htwinkle.Adapter;
+package com.twinkle.htwinkle.adapter;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;

@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">校园BBS</string>
+    <string name="app_name">鲜活</string>
     <string name="version">version - %1$d</string>
 
     <!--Welcome页面-->
     <string name="skip">跳过</string>
+    <string name="fetchUserInfoSuccess">同步用户信息成功</string>
+    <string name="fetchUserInfoFailure">同步用户信息失败</string>
 
     <!--Login页面-->
     <string name="inputTel">请输入手机号</string>
@@ -32,6 +34,11 @@
     <string name="pass2">请再次输入密码</string>
     <string name="pass_not_equal">两次密码不同，请重新输入</string>
     <string name="modify_pass_success">修改密码成功</string>
+    <string name="modify_user_info_success">修改信息成功</string>
+    <string name="modify_user_info_failure">修改信息失败</string>
+    <string name="send_post_success">发布成功！</string>
+    <string name="send_post_failure">发布失败！</string>
+
 
     <!--main页面-->
     <string name="main">首页</string>
@@ -47,28 +54,62 @@
     <string name="positive">确定</string>
     <string name="negative">取消</string>
 
+    <string name="my_menu_user_title">我的</string>
+
+    <string-array name="my_list_info">
+        <item>我的账号</item>
+        <item>我的昵称</item>
+        <item>我的性别</item>
+        <item>我的个性签名</item>
+        <item>我的学号</item>
+        <item>我的网络教学平台密码</item>
+        <item>我的教务管理系统密码</item>
+        <item>我的经验</item>
+
+
+    </string-array>
+
+
     <string-array name="my_menu_user">
-        <item>我的</item>
         <item>个人主页</item>
         <item>我的收藏</item>
         <item>草稿箱</item>
     </string-array>
 
+    <string name="my_menu_jwgl_title">教务管理系统</string>
+
     <string-array name="my_menu_jwgl">
-        <item>教务管理系统</item>
         <item>个人信息</item>
         <item>我的成绩</item>
         <item>我的课表</item>
     </string-array>
 
+    <string name="my_menu_eol_title">网络教学平台</string>
+
     <string-array name="my_menu_eol">
-        <item>网络教学平台</item>
         <item>个人信息</item>
         <item>我的作业</item>
     </string-array>
 
+    <string name="my_menu_one_day_title">每日推荐</string>
+
+    <string-array name="my_menu_one">
+        <item>每日一文</item>
+        <item>每日一曲</item>
+        <item>每日一图</item>
+    </string-array>
+
+
+    <string name="my_menu_tools_title">小助手</string>
+
+    <string-array name="my_menu_tool">
+        <item>智能小华</item>
+        <item>电脑义务维修</item>
+    </string-array>
+
+    <string name="my_menu_seeting_title">设置</string>
+
     <string-array name="my_menu_setting">
-        <item>设置</item>
         <item>设置</item>
         <item>注销</item>
     </string-array>
@@ -108,7 +149,7 @@
     </string-array>
 
     <!--topic页面-->
-    <string name="topic">你想去哪儿</string>
+    <string name="topic">选个地点来输入吧</string>
 
     <!--progress-->
     <string name="is_progress">正在加载</string>
@@ -194,6 +235,15 @@
 
     <string name="check_version_is_newer">您已安装最新版本！</string>
     <string name="red_point">小红点</string>
+
+
+    <!--info-->
+    <string name="info_index">我的信息</string>
+    <string name="coll">收藏</string>
+    <string name="dynamic">动态</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

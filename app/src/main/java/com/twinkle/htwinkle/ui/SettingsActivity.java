@@ -24,7 +24,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.twinkle.htwinkle.R;
-import com.twinkle.htwinkle.init.InitUtils;
+import com.twinkle.htwinkle.init.Utils;
 
 import java.util.List;
 
@@ -96,7 +96,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
             case 4:
-                InitUtils.INSTANCE.clearAllCache(getApplicationContext());
+                Utils.INSTANCE.clearAllCache(getApplicationContext());
                 Toast.makeText(this, getString(R.string.clear_cache_success), Toast.LENGTH_SHORT).show();
 
                 break;

@@ -24,9 +24,9 @@
             android:contentDescription="@null"
             android:src="?attr/homeAsUpIndicator" />
 
-        <ImageView
+        <com.loopj.android.image.SmartImageView
             android:contentDescription="@null"
-            android:id="@+id/wMess_iv_header"
+            android:id="@+id/wMess_siv_header"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
@@ -63,11 +63,12 @@
             android:gravity="start|top"
             android:hint="@string/text"
             android:inputType="textMultiLine"
-            android:minHeight="200dp"
+            android:minHeight="160dp"
             android:padding="10dp" />
 
 
         <LinearLayout
+            android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="bottom"

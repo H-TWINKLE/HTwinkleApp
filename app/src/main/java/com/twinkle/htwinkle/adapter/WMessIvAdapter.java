@@ -1,16 +1,14 @@
-package com.twinkle.htwinkle.Adapter;
+package com.twinkle.htwinkle.adapter;
 
-import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.jph.takephoto.model.TImage;
+import com.loopj.android.image.SmartImageView;
 import com.twinkle.htwinkle.R;
+import com.twinkle.htwinkle.init.Utils;
 
-import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
 import java.util.List;
@@ -24,11 +22,13 @@ public class WMessIvAdapter extends BaseQuickAdapter<TImage, BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder helper, TImage item) {
 
-        ImageView view = helper.getView(R.id.wMess_rv_base_iv);
+        SmartImageView view = helper.getView(R.id.wMess_rv_base_iv);
 
-        x.image().bind(view,item.getOriginalPath(),new ImageOptions.Builder().setIgnoreGif(true).setLoadingDrawableId(R.drawable.load).build());
+        x.image().bind(view, item.getOriginalPath(), Utils.INSTANCE.baseOptions());
 
+        //view.setImageBitmap(BitmapFactory.decodeFile(item.getOriginalPath()));
 
+        //helper.setImageBitmap(R.id.wMess_rv_base_iv, BitmapFactory.decodeFile(item.getOriginalPath()));
 
         helper.addOnClickListener(R.id.wMess_rv_base_iv_del);
 
