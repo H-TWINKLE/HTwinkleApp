@@ -45,12 +45,10 @@ public enum Bmob {
 
     INSTANCE;
 
-    private static final String TAG = "Bmob";
-
     //检查手机号是否存在
 
     public void BmobCheckUser(String tel) {
-        BmobQuery<User> query = new BmobQuery<User>();
+        BmobQuery<User> query = new BmobQuery<>();
         query.addWhereEqualTo("username", tel);
         query.findObjects(new FindListener<User>() {
             @Override
@@ -1391,7 +1389,7 @@ public enum Bmob {
 
     //查询用户的所有帖子
 
-    public void BmobFindAllListPostByUserId(BmobUser user,int current) {
+    public void BmobFindAllListPostByUserId(BmobUser user, int current) {
 
         BmobQuery<Post> query = new BmobQuery<>();
         query.addWhereEqualTo("author", user);  // 查询当前用户的所有帖子
@@ -1434,7 +1432,7 @@ public enum Bmob {
 
     //查询指定类型的帖子
 
-    public void BmobFindPostByTopic(String [] topic,int current){
+    public void BmobFindPostByTopic(String[] topic, int current) {
 
         BmobQuery<Post> query = new BmobQuery<>();
         query.setLimit(10);
@@ -1445,7 +1443,7 @@ public enum Bmob {
         query.findObjects(new FindListener<Post>() {
 
             @Override
-            public void done(List<Post> object,BmobException e) {
+            public void done(List<Post> object, BmobException e) {
                 if (e == null) {
                     if (bmobFindPostByTopicListener != null) {
                         bmobFindPostByTopicListener.onBmobFindPostByTopicListenerSuccess(object);
@@ -1461,16 +1459,43 @@ public enum Bmob {
     }
 
 
-    public interface  BmobFindPostByTopicListener{
+    public interface BmobFindPostByTopicListener {
         void onBmobFindPostByTopicListenerSuccess(List<Post> list);
+
         void onBmobFindPostByTopicListenerFailure(String text);
     }
 
 
-    private  BmobFindPostByTopicListener bmobFindPostByTopicListener;
+    private BmobFindPostByTopicListener bmobFindPostByTopicListener;
 
     public void setBmobFindPostByTopicListener(BmobFindPostByTopicListener bmobFindPostByTopicListener) {
         this.bmobFindPostByTopicListener = bmobFindPostByTopicListener;
+    }
+
+    public void updateUserLv(Integer lv) {
+
+        User user = BmobUser.getCurrentUser(User.class);
+
+        Integer oldLv = (user.getLv() == null) ? 0 : Integer.parseInt(user.getLv());
+
+        new User.Builder().lv(String.valueOf(oldLv + lv)).build().update(user.getObjectId(), new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+
+            }
+        });
+
+        onlyFetchUserJsonInfo();
+
+    }
+
+    public void onlyFetchUserJsonInfo() {
+        BmobUser.fetchUserJsonInfo(new FetchUserInfoListener<String>() {
+            @Override
+            public void done(String s, BmobException e) {
+
+            }
+        });
     }
 
 

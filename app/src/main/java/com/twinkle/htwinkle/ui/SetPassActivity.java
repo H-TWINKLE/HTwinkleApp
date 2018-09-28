@@ -1,10 +1,8 @@
 package com.twinkle.htwinkle.ui;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -13,10 +11,12 @@ import com.twinkle.htwinkle.base.BaseActivity;
 import com.twinkle.htwinkle.entity.User;
 import com.twinkle.htwinkle.net.Bmob;
 
-import static com.twinkle.htwinkle.init.Constant.*;
-
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
+
+import static com.twinkle.htwinkle.init.Constant.Default_Int;
+import static com.twinkle.htwinkle.init.Constant.Modify_Pass;
+import static com.twinkle.htwinkle.init.Constant.Register_;
 
 
 public class SetPassActivity extends BaseActivity implements Bmob.RegisterListener, Bmob.ModifyPassWithoutLoginListener {
@@ -30,9 +30,6 @@ public class SetPassActivity extends BaseActivity implements Bmob.RegisterListen
 
     @ViewInject(value = R.id.sp_et_pass2)
     private EditText sp_et_pass2;
-
-    @ViewInject(value = R.id.sp_bt_ok)
-    private Button sp_bt_ok;
 
 
     @Event(value = R.id.sp_bt_ok)
@@ -80,7 +77,12 @@ public class SetPassActivity extends BaseActivity implements Bmob.RegisterListen
             sp_et_pass2.setFocusable(true);
             sp_et_pass2.setError(getString(R.string.pass_not_equal));
             return false;
+        } else if (pass1.length() < 6) {
+            sp_et_pass1.setFocusable(true);
+            sp_et_pass1.setError(getString(R.string.pass_6));
+            return false;
         }
+
         return true;
 
     }
@@ -105,7 +107,7 @@ public class SetPassActivity extends BaseActivity implements Bmob.RegisterListen
         setToolBarFlag(true);
         code = getIntent().getIntExtra("flag", Default_Int);
         tel = getIntent().getStringExtra("tel");
-        user = (User)getIntent().getSerializableExtra("user");
+        user = (User) getIntent().getSerializableExtra("user");
 
         switch (code) {
             case Register_:
@@ -122,9 +124,8 @@ public class SetPassActivity extends BaseActivity implements Bmob.RegisterListen
 
     @Override
     public void RegisterSuccess(User user) {
+        Toast.makeText(SetPassActivity.this, getString(R.string.register_success), Toast.LENGTH_SHORT).show();
         finish();
-        startActivity(new Intent(SetPassActivity.this, LoginActivity.class));
-
     }
 
     @Override
@@ -136,7 +137,6 @@ public class SetPassActivity extends BaseActivity implements Bmob.RegisterListen
     public void ModifyPassWithoutLoginSuccess() {
         Toast.makeText(SetPassActivity.this, getString(R.string.modify_pass_success), Toast.LENGTH_SHORT).show();
         finish();
-        startActivity(new Intent(SetPassActivity.this, LoginActivity.class));
     }
 
     @Override

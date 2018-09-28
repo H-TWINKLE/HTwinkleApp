@@ -1,8 +1,6 @@
 package com.twinkle.htwinkle.ui;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -72,9 +70,7 @@ public class RobotActivity extends BaseActivity implements Twinkle.JwglListener 
         Twinkle.INSTANCE.setJwglListener(this);
 
         detail_user_comment_et_text.addTextChangedListener(textWatcher);
-        detail_user_comment_et_text.setOnClickListener(view -> {
-            toScroll();
-        });
+        detail_user_comment_et_text.setOnClickListener(view -> toScroll());
 
         List<Talk> list = new ArrayList<>();
 

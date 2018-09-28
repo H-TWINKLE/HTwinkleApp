@@ -3,20 +3,12 @@ package com.twinkle.htwinkle.init;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.renderscript.Allocation;
-import android.renderscript.Element;
-import android.renderscript.RenderScript;
-import android.renderscript.ScriptIntrinsicBlur;
-import android.text.Editable;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
-import android.util.Log;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
@@ -27,23 +19,12 @@ import com.twinkle.htwinkle.entity.User;
 import com.twinkle.htwinkle.entity.ViewTypes;
 
 import org.xutils.DbManager;
-import org.xutils.common.Callback;
-import org.xutils.db.table.TableEntity;
-import org.xutils.http.RequestParams;
 import org.xutils.image.ImageOptions;
-import org.xutils.x;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import cn.bmob.v3.BmobUser;
 
@@ -95,7 +76,7 @@ public enum Utils {
         return new ImageOptions.Builder().setLoadingDrawableId(R.drawable.load).setIgnoreGif(true).setSize(800, 800).build();
     }
 
-    public Bitmap blurBitmap(Context context, Bitmap image, float blurRadius) { // 计算图片缩小后的长宽
+   /* public Bitmap blurBitmap(Context context, Bitmap image, float blurRadius) { // 计算图片缩小后的长宽
         int width = Math.round(image.getWidth() * 0.4f);
         int height = Math.round(image.getHeight() * 0.4f); // 将缩小后的图片做为预渲染的图片
         Bitmap inputBitmap = Bitmap.createScaledBitmap(image, width, height, false); // 创建一张渲染后的输出图片
@@ -110,7 +91,7 @@ public enum Utils {
         blurScript.forEach(tmpOut); // 将数据填充到Allocation中
         tmpOut.copyTo(outputBitmap);
         return outputBitmap;
-    }
+    }*/
 
     public <T> List<Title> ReflexByClass(Context context, T t) {
 
@@ -218,9 +199,7 @@ public enum Utils {
             .setDbVersion(1)
             .setAllowTransaction(true)    //设置是否允许事务，默认true
             //设置数据库打开的监听
-            .setDbOpenListener(db -> {
-                db.getDatabase().enableWriteAheadLogging();
-            })
+            .setDbOpenListener(db -> db.getDatabase().enableWriteAheadLogging())
             //设置数据库更新的监听
             .setDbUpgradeListener((db, oldVersion, newVersion) -> {
             })
@@ -231,6 +210,10 @@ public enum Utils {
 
     public ImageOptions ImageOptionsInCir() {
         return new ImageOptions.Builder().setLoadingDrawableId(R.drawable.logo).setIgnoreGif(false).setCircular(true).build();
+    }
+
+    public ImageOptions ImageOptionsInWelBackGround() {
+        return new ImageOptions.Builder().setLoadingDrawableId(R.drawable.logo).setIgnoreGif(false).setLoadingDrawableId(R.drawable.wel).setFailureDrawableId(R.drawable.wel).build();
     }
 
     public String getPostTopicInString(Post post) {
@@ -344,16 +327,10 @@ public enum Utils {
 
             for (int x = 0; x < str.length; x++) {
                 viewTypes = new ViewTypes();
-                if (x == 1) {
-                    viewTypes.setNewTip(true);
-                    viewTypes.setType(1);
-                    viewTypes.setMenuTitle(str[x]);
-                    viewTypes.setMenuIcon(Constant.my_menu_eol_icon[x]);
-                } else {
-                    viewTypes.setType(1);
-                    viewTypes.setMenuTitle(str[x]);
-                    viewTypes.setMenuIcon(Constant.my_menu_eol_icon[x]);
-                }
+                viewTypes.setType(1);
+                viewTypes.setMenuTitle(str[x]);
+                viewTypes.setMenuIcon(Constant.my_menu_eol_icon[x]);
+
 
                 list.add(viewTypes);
             }

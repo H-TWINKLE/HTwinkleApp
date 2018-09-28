@@ -18,9 +18,9 @@ import android.widget.Toast;
 
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.adapter.CommentAdapter;
-import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.entity.Comment;
 import com.twinkle.htwinkle.listener.HidingScrollListener;
+import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.view.IndexLoadMoreView;
 
 import org.xutils.view.annotation.ContentView;
@@ -109,9 +109,7 @@ public class FragmentNewsComment extends Fragment implements
         adapter = new CommentAdapter(R.layout.item_news_comment, list);
         adapter.setLoadMoreView(new IndexLoadMoreView());
         adapter.setEnableLoadMore(false);
-        adapter.setOnItemClickListener((adapter, view, position) -> {
-            onItemClick(position);
-        });
+        adapter.setOnItemClickListener((adapter, view, position) -> onItemClick(position));
 
         fragment_news_c_rv.setLayoutManager(new LinearLayoutManager(getContext()));
         fragment_news_c_rv.setAdapter(adapter);
@@ -216,6 +214,11 @@ public class FragmentNewsComment extends Fragment implements
         } else {
             adapter.loadMoreComplete();
         }
+
+        if (adapter.getData().size() == 0) {
+            adapter.setEmptyView(R.layout.base_content_empty);
+        }
+
     }
 
 

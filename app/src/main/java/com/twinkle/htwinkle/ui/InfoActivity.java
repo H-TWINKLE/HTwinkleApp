@@ -1,7 +1,6 @@
 package com.twinkle.htwinkle.ui;
 
 import android.app.Activity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,10 +26,10 @@ import com.loopj.android.image.SmartImageView;
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.adapter.FragAdapter;
 import com.twinkle.htwinkle.base.BaseActivity;
-import com.twinkle.htwinkle.entity.User;
-import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.dialog.MyDialog;
+import com.twinkle.htwinkle.entity.User;
 import com.twinkle.htwinkle.listener.AppBarStateChangeListener;
+import com.twinkle.htwinkle.net.Bmob;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;

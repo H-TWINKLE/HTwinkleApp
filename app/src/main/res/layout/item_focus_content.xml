@@ -73,7 +73,7 @@
             android:layout_marginTop="15dp"
             android:layout_height="2dp"
             android:layout_width="match_parent"
-            layout="@layout/base_div"/>
+            layout="@layout/base_div" />
 
     </LinearLayout>
 

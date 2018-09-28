@@ -5,15 +5,15 @@ import android.app.Activity;
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.adapter.IndexAdapter;
 import com.twinkle.htwinkle.base.BaseRefreshActivity;
-import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.entity.Collection;
 import com.twinkle.htwinkle.entity.Post;
+import com.twinkle.htwinkle.net.Bmob;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class CollectActivity extends BaseRefreshActivity<Post,IndexAdapter> implements Bmob.BmobGetListUserCollectListener {
+public class CollectActivity extends BaseRefreshActivity<Post, IndexAdapter> implements Bmob.BmobGetListUserCollectListener {
 
     @Override
     public Activity setActivity() {
@@ -56,6 +56,10 @@ public class CollectActivity extends BaseRefreshActivity<Post,IndexAdapter> impl
         }
 
         onSuccessGetList(posts);
+
+        if (list.size() == 0) {
+            adapter.setEmptyView(R.layout.base_content_empty);
+        }
 
     }
 

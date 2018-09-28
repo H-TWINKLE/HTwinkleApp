@@ -21,13 +21,13 @@ import com.jph.takephoto.model.CropOptions;
 import com.jph.takephoto.model.TImage;
 import com.jph.takephoto.model.TResult;
 import com.loopj.android.image.SmartImageView;
-import com.twinkle.htwinkle.adapter.WMessIvAdapter;
 import com.twinkle.htwinkle.R;
+import com.twinkle.htwinkle.adapter.WMessIvAdapter;
+import com.twinkle.htwinkle.dialog.MyDialog;
 import com.twinkle.htwinkle.entity.Post;
 import com.twinkle.htwinkle.entity.User;
-import com.twinkle.htwinkle.net.Bmob;
-import com.twinkle.htwinkle.dialog.MyDialog;
 import com.twinkle.htwinkle.init.Utils;
+import com.twinkle.htwinkle.net.Bmob;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -280,6 +280,7 @@ public class WriteMessActivity extends TakePhotoActivity implements Bmob.BmobUpl
         Toast.makeText(WriteMessActivity.this, R.string.send_post_success, Toast.LENGTH_SHORT).show();
         deleteCacheFile();
         myDialog.dismiss();
+        Bmob.INSTANCE.updateUserLv(100);
         WriteMessActivity.this.finish();
     }
 

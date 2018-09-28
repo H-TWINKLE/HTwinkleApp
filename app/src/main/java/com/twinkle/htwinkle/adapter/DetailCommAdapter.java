@@ -1,9 +1,7 @@
 package com.twinkle.htwinkle.adapter;
 
 import android.support.annotation.Nullable;
-import android.util.Log;
 
-import com.alibaba.fastjson.JSON;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.loopj.android.image.SmartImageView;

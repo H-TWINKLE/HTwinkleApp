@@ -8,7 +8,6 @@ import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.entity.Title;
 
 import java.util.List;
-import java.util.Map;
 
 public class BaseTitleJwglAdapter extends BaseQuickAdapter<Title, BaseViewHolder> {
 
@@ -19,12 +18,9 @@ public class BaseTitleJwglAdapter extends BaseQuickAdapter<Title, BaseViewHolder
     @Override
     protected void convert(BaseViewHolder helper, Title item) {
 
-        helper.setText(R.id.base_title_tv_title, item.getTitle()+"");
+        helper.setText(R.id.base_title_tv_title, item.getTitle() + "");
 
-        helper.setText(R.id.base_title_tv_content, item.getContent()+"");
-
-
-
+        helper.setText(R.id.base_title_tv_content, item.getContent() + "");
 
 
     }

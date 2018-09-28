@@ -2,18 +2,15 @@ package com.twinkle.htwinkle.ui;
 
 import android.app.Activity;
 import android.view.View;
-import com.twinkle.htwinkle.R;
 
+import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.adapter.JwglScoreAdapter;
 import com.twinkle.htwinkle.base.BaseRefreshActivity;
 import com.twinkle.htwinkle.dialog.MyDialog;
 import com.twinkle.htwinkle.entity.Jwgl;
-
 import com.twinkle.htwinkle.entity.JwglScore;
 import com.twinkle.htwinkle.entity.User;
-
 import com.twinkle.htwinkle.net.Twinkle;
-
 
 import java.util.List;
 
@@ -77,7 +74,7 @@ public class JwglScoreActivity extends BaseRefreshActivity<JwglScore, JwglScoreA
     @Override
     public void onJwglListenerSuccess(Object t) {
 
-        Jwgl j = (Jwgl)t;
+        Jwgl j = (Jwgl) t;
 
         dialog.dismiss();
 
@@ -85,6 +82,10 @@ public class JwglScoreActivity extends BaseRefreshActivity<JwglScore, JwglScoreA
         onSuccessGetList(j.getJwglscore());
 
         adapter.setEnableLoadMore(false);
+
+        if (adapter.getData().size() == 0) {
+            adapter.setEmptyView(R.layout.base_content_empty);
+        }
     }
 
     @Override

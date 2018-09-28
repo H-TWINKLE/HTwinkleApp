@@ -10,8 +10,7 @@
         android:id="@+id/main_side_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem = "@layout/side_content_rv"/>
-
+        tools:listitem="@layout/side_content_rv" />
 
 
 </LinearLayout>

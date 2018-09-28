@@ -82,6 +82,10 @@ public class JwglInfoActivity extends BaseRefreshActivity<Title, BaseTitleJwglAd
         onSuccessGetList(list);
 
         adapter.setEnableLoadMore(false);
+
+        if (adapter.getData().size() == 0) {
+            adapter.setEmptyView(R.layout.base_content_empty);
+        }
     }
 
     @Override

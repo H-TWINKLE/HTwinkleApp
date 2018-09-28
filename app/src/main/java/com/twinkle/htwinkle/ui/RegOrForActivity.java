@@ -26,7 +26,10 @@ import java.util.Locale;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
-import static com.twinkle.htwinkle.init.Constant.*;
+import static com.twinkle.htwinkle.init.Constant.CountDownInterval_;
+import static com.twinkle.htwinkle.init.Constant.Default_Int;
+import static com.twinkle.htwinkle.init.Constant.Modify_Pass;
+import static com.twinkle.htwinkle.init.Constant.Register_;
 
 public class RegOrForActivity extends BaseActivity implements Bmob.CheckUserListener {
 

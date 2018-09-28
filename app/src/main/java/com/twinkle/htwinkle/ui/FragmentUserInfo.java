@@ -33,6 +33,8 @@ import java.util.Objects;
 
 import cn.bmob.v3.BmobUser;
 
+import static com.twinkle.htwinkle.init.Constant.Modify_Pass;
+
 
 @ContentView(R.layout.fragment_fragment_user_info)
 public class FragmentUserInfo extends Fragment implements Bmob.ModifyUserInfoListener {
@@ -81,6 +83,14 @@ public class FragmentUserInfo extends Fragment implements Bmob.ModifyUserInfoLis
 
     }
 
+    private void startActivity() {
+
+        Intent intent = new Intent(getActivity(), RegOrForActivity.class);
+        intent.putExtra("flag", Modify_Pass);
+        startActivity(intent);
+
+    }
+
     private AdapterView.OnItemClickListener listener = (parent, view, position, id) -> {
         switch (position) {
             case 0:
@@ -89,6 +99,9 @@ public class FragmentUserInfo extends Fragment implements Bmob.ModifyUserInfoLis
                 break;
             case 2:
                 showSexDialog();
+                break;
+            case 8:
+                startActivity();
                 break;
             default:
                 showOtherMessage(position);
@@ -201,6 +214,10 @@ public class FragmentUserInfo extends Fragment implements Bmob.ModifyUserInfoLis
         map = new HashMap<>();
         map.put("title", user_info[7]);
         map.put("value", user.getLv() == null ? 0 : user.getLv());
+        list.add(map);
+        map = new HashMap<>();
+        map.put("title", user_info[8]);
+        map.put("value", getString(R.string.click_me_to_modify_pass));
         list.add(map);
 
 

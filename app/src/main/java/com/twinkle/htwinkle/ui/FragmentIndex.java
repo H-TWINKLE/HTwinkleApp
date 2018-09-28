@@ -12,23 +12,25 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Toast;
 
+import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.adapter.GlideImageLoader;
-import com.twinkle.htwinkle.dialog.DialogInShowBigPic;
-import com.twinkle.htwinkle.entity.User;
-import com.twinkle.htwinkle.listener.HidingScrollListener;
 import com.twinkle.htwinkle.adapter.IndexAdapter;
 import com.twinkle.htwinkle.adapter.IndexTypesAdapter;
-import com.twinkle.htwinkle.R;
-import com.twinkle.htwinkle.net.Bmob;
+import com.twinkle.htwinkle.dialog.DialogInShowBigPic;
 import com.twinkle.htwinkle.entity.IndexTypes;
 import com.twinkle.htwinkle.entity.Post;
+import com.twinkle.htwinkle.entity.User;
 import com.twinkle.htwinkle.init.Constant;
+import com.twinkle.htwinkle.init.Utils;
+import com.twinkle.htwinkle.listener.HidingScrollListener;
+import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.view.IndexLoadMoreView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -39,9 +41,9 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 
 @ContentView(R.layout.fragment_index)
@@ -50,6 +52,8 @@ public class FragmentIndex extends Fragment implements Bmob.BmobGetPostListener 
     private DialogInShowBigPic dialogInShowBigPic;
 
     private boolean isrefresh = false;
+
+    private List<Post> bannerList;
 
     @ViewInject(value = R.id.main_index_srl)
     private SwipeRefreshLayout main_index_srl;
@@ -66,6 +70,8 @@ public class FragmentIndex extends Fragment implements Bmob.BmobGetPostListener 
     private RecyclerView main_index_rv;
 
     private Banner main_bn_header;
+
+    private boolean isFirstEnter = true;
 
     public FragmentIndex() {
 
@@ -103,16 +109,13 @@ public class FragmentIndex extends Fragment implements Bmob.BmobGetPostListener 
         main_index_rv.setLayoutManager(new LinearLayoutManager(getContext()));
 
         indexAdapter = new IndexAdapter(getContext(), list);
-        indexAdapter.addHeaderView(initBannerHeader1());
-        indexAdapter.addHeaderView(initRvHeader2());
+        indexAdapter.addHeaderView(initRvHeader2(), 1);
         indexAdapter.isFirstOnly(false);
         indexAdapter.openLoadAnimation(1);
         indexAdapter.setLoadMoreView(new IndexLoadMoreView());
         indexAdapter.setEnableLoadMore(false);
         indexAdapter.setOnLoadMoreListener(this::setLoadMoreData, main_index_rv);
-        indexAdapter.setOnItemClickListener((adapter, view, position) -> {
-            openOnePost(list.get(position));
-        });
+        indexAdapter.setOnItemClickListener((adapter, view, position) -> openOnePost(list.get(position)));
 
         indexAdapter.setOnItemChildClickListener((adapter, view, position) -> {
             switch (view.getId()) {
@@ -191,9 +194,7 @@ public class FragmentIndex extends Fragment implements Bmob.BmobGetPostListener 
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
 
         IndexTypesAdapter indexTypesAdapter = new IndexTypesAdapter(R.layout.item_index_content_header, list);
-        indexTypesAdapter.setOnItemChildClickListener((adapter, view1, position) -> {
-            toStartActivity(position, array);
-        });
+        indexTypesAdapter.setOnItemChildClickListener((adapter, view1, position) -> toStartActivity(position, array));
 
         recyclerView.setAdapter(indexTypesAdapter);
 
@@ -217,30 +218,30 @@ public class FragmentIndex extends Fragment implements Bmob.BmobGetPostListener 
     }
 
 
-    private View initBannerHeader1() {
+    private View initBannerHeader1(List<String> title, List<String> pic) {
 
         View view = getLayoutInflater().inflate(R.layout.header_index_banner, main_index_rv, false);
 
         main_bn_header = view.findViewById(R.id.main_bn_header);
         main_bn_header.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);//设置banner样式
         main_bn_header.setImageLoader(new GlideImageLoader());//设置图片加载器
-        main_bn_header.setImages(Arrays.asList(Constant.my_pic_url)); //设置图片集合
+        main_bn_header.setImages(pic); //设置图片集合
         main_bn_header.setBannerAnimation(Transformer.DepthPage);//设置banner动画效果
-        main_bn_header.setBannerTitles(Arrays.asList(Constant.my_pic_title));//设置标题集合（当banner样式有显示title时）
+        main_bn_header.setBannerTitles(title);//设置标题集合（当banner样式有显示title时）
         main_bn_header.isAutoPlay(true);//设置自动轮播，默认为true
         main_bn_header.setDelayTime(3000); //设置轮播时间
         main_bn_header.setIndicatorGravity(BannerConfig.CENTER);//设置指示器位置（当banner模式中有指示器时）
+        main_bn_header.setOnBannerListener(position -> openOnePost(bannerList.get(position)));
         main_bn_header.start();  //banner设置方法全部调用完毕时最后调用
 
         return view;
 
     }
 
+
     @Override
     public void onStart() {
         super.onStart();
-        //开始轮播
-        main_bn_header.startAutoPlay();
     }
 
     @Override
@@ -286,8 +287,50 @@ public class FragmentIndex extends Fragment implements Bmob.BmobGetPostListener 
             indexAdapter.loadMoreComplete();
         }
 
+        if (indexAdapter.getData().size() == 0) {
+            indexAdapter.setEmptyView(R.layout.base_content_empty);
+        }
+
+        setHeaderViewData(list);
+
 
     }
+
+    private void setHeaderViewData(List<Post> posts) {
+
+        if (posts == null || posts.size() == 0)
+            return;
+
+        bannerList = new ArrayList<>();
+
+        List<String> title = new ArrayList<>();
+
+        List<String> img = new ArrayList<>();
+
+        Random random = new Random();
+
+        for (int x = 0; x < 5; x++) {
+
+            int y = random.nextInt(posts.size());
+
+            if (posts.get(y).getPic() != null && posts.get(y).getPic().size() > 0 && !TextUtils.isEmpty(posts.get(y).getContent())) {
+                img.add(posts.get(y).getPic().get(0));
+                title.add(Utils.INSTANCE.convertHtmlText(posts.get(y).getContent()).toString());
+                bannerList.add(posts.get(y));
+            }
+
+
+        }
+
+        if (isFirstEnter) {
+            indexAdapter.addHeaderView(initBannerHeader1(title, img), 0);
+            main_bn_header.startAutoPlay();
+            isFirstEnter = false;
+        }
+
+
+    }
+
 
     @Override
     public void onGetPostFailure(String text) {

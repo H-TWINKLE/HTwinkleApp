@@ -33,8 +33,8 @@ public class MenuHeaderAndFooterAdapter extends BaseQuickAdapter<ViewTypes, Base
         switch (helper.getItemViewType()) {
             case ViewTypes.Title_TYPE:
                 helper.setText(R.id.main_side_tv_title, item.getMenuTitle());
-                helper.setImageResource(R.id.main_side_iv_icon,item.getMenuIcon());
-                if(item.getNewTip()){
+                helper.setImageResource(R.id.main_side_iv_icon, item.getMenuIcon());
+                if (item.getNewTip()) {
                     View view = helper.getView(R.id.main_side_iv_newTip);
                     view.setVisibility(View.VISIBLE);
                 }

@@ -5,7 +5,7 @@
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <include layout="@layout/base_item_index_content_user"/>
+    <include layout="@layout/base_item_index_content_user" />
 
     <TextView
         android:id="@+id/item_detail_comment_tv"
@@ -17,12 +17,12 @@
         android:layout_marginStart="56dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/lyric"/>
+        tools:text="@string/lyric" />
 
     <include
         android:layout_height="1dp"
         android:layout_width="match_parent"
-        layout="@layout/base_div"/>
+        layout="@layout/base_div" />
 
 
 </LinearLayout>

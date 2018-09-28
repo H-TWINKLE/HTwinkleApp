@@ -41,11 +41,9 @@
             android:id="@+id/main_side_iv_newTip"
             android:layout_width="8dp"
             android:layout_height="8dp"
-            android:contentDescription="@null"
-             />
+            android:contentDescription="@null" />
 
     </LinearLayout>
-
 
 
 </LinearLayout>

@@ -12,8 +12,7 @@
     <include
         layout="@layout/base_refresh_activity"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

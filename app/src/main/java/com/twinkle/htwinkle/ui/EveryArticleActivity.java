@@ -1,7 +1,6 @@
 package com.twinkle.htwinkle.ui;
 
 import android.app.Activity;
-
 import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.TextView;
@@ -13,6 +12,7 @@ import com.twinkle.htwinkle.base.BaseActivity;
 import com.twinkle.htwinkle.dialog.MyDialog;
 import com.twinkle.htwinkle.entity.EveryArticle;
 import com.twinkle.htwinkle.init.Utils;
+import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.net.Twinkle;
 
 import org.xutils.view.annotation.Event;
@@ -72,13 +72,14 @@ public class EveryArticleActivity extends BaseActivity implements Twinkle.JwglLi
 
     private void readArticle() {
 
+        Bmob.INSTANCE.updateUserLv(20);
+
         everyArticle = Twinkle.INSTANCE.readOneArticle();
 
         if (everyArticle == null) {
             myDialog.show();
             Twinkle.INSTANCE.getEveryOneArticle(10);
         } else {
-
             bindData();
         }
 

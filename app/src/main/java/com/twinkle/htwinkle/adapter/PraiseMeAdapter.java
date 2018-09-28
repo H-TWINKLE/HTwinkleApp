@@ -31,6 +31,6 @@ public class PraiseMeAdapter extends BaseQuickAdapter<Praise, BaseViewHolder> {
 
         helper.setText(R.id.me_item_tv_date, item.getCreatedAt());
 
-        helper.setText(R.id.me_item_tv_post_comment_my,Utils.INSTANCE.convertHtmlText( item.getPost().getContent()));
+        helper.setText(R.id.me_item_tv_post_comment_my, Utils.INSTANCE.convertHtmlText(item.getPost().getContent()));
     }
 }

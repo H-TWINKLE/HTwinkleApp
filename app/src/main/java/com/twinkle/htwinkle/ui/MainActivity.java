@@ -1,7 +1,6 @@
 package com.twinkle.htwinkle.ui;
 
 import android.app.Activity;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -11,7 +10,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -25,14 +23,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.image.SmartImageView;
+import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.adapter.FragAdapter;
 import com.twinkle.htwinkle.adapter.MenuHeaderAndFooterAdapter;
-import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.base.BaseActivity;
 import com.twinkle.htwinkle.entity.User;
 import com.twinkle.htwinkle.entity.ViewTypes;
 import com.twinkle.htwinkle.init.Utils;
+import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.receiver.UserInfoReceiver;
+import com.twinkle.htwinkle.service.SubjectService;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -130,6 +130,10 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         lists.add(new FragmentNews());
 
         user = BmobUser.getCurrentUser(User.class);
+
+        startService(new Intent(MainActivity.this, SubjectService.class));
+
+        Bmob.INSTANCE.updateUserLv(50);
 
     }
 
@@ -370,15 +374,13 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
                 })
                 .create()
                 .show();
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         if (headerAndFooterAdapter != null) {
-            headerAndFooterAdapter.replaceData(Utils.INSTANCE.getMenuList(this));
-            headerAndFooterAdapter.notifyDataSetChanged();
+            headerAndFooterAdapter.setNewData(Utils.INSTANCE.getMenuList(this));
         }
     }
 

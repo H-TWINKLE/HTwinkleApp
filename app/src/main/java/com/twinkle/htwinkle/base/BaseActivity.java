@@ -18,12 +18,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private boolean toolBarFlag = false;
 
-    private Toolbar baseToolBar;
-
-    public String getToolBarTitles() {
-        return toolBarTitles;
-    }
-
     public void setToolBarTitles(String toolBarTitles) {
         this.toolBarTitles = toolBarTitles;
     }
@@ -47,7 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void setToolBar() {
         if (toolBarFlag) {
 
-            baseToolBar = findViewById(R.id.comm_tb);
+            Toolbar baseToolBar = findViewById(R.id.comm_tb);
 
             if (!TextUtils.isEmpty(toolBarTitles)) {
                 baseToolBar.setTitle(toolBarTitles);
@@ -58,10 +52,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             this.setSupportActionBar(baseToolBar);
             baseToolBar.setNavigationOnClickListener(e -> this.finish());
         }
-    }
-
-    public Toolbar getBaseToolBar() {
-        return baseToolBar;
     }
 
     public abstract int setLayout();

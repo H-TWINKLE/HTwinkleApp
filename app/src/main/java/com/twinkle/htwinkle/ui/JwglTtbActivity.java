@@ -151,7 +151,7 @@ public class JwglTtbActivity extends BaseActivity implements Twinkle.JwglListene
     @Override
     public void onJwglListenerSuccess(Object t) {
 
-        Jwgl j = (Jwgl)t;
+        Jwgl j = (Jwgl) t;
 
         myDialog.dismiss();
 

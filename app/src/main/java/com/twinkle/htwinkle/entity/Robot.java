@@ -21,8 +21,6 @@ public class Robot {
      */
 
 
-
-
     private int code;
     private String text;
     private String url;
@@ -50,7 +48,6 @@ public class Robot {
     public void setUrl(String url) {
         this.url = url;
     }
-
 
 
 }

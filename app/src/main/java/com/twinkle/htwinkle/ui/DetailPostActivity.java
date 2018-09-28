@@ -22,13 +22,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.loopj.android.image.SmartImageView;
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.adapter.BaseRVOnlyWithPicAdapter;
 import com.twinkle.htwinkle.adapter.DetailCommAdapter;
 import com.twinkle.htwinkle.base.BaseActivity;
-import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.dialog.DialogInShowBigPic;
 import com.twinkle.htwinkle.dialog.MyDialog;
 import com.twinkle.htwinkle.entity.Collection;
@@ -38,6 +36,7 @@ import com.twinkle.htwinkle.entity.Post;
 import com.twinkle.htwinkle.entity.Praise;
 import com.twinkle.htwinkle.entity.User;
 import com.twinkle.htwinkle.init.Utils;
+import com.twinkle.htwinkle.net.Bmob;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -250,6 +249,8 @@ public class DetailPostActivity extends BaseActivity implements Bmob.BmobAddPost
         Bmob.INSTANCE.setBmobGetOnePostListener(this);
         Bmob.INSTANCE.BmobGetOnePost(new Post(onepost.getObjectId()));
 
+        Bmob.INSTANCE.updateUserLv(10);
+
 
     }
 
@@ -456,6 +457,8 @@ public class DetailPostActivity extends BaseActivity implements Bmob.BmobAddPost
         post.increment("commentnum");
 
         Bmob.INSTANCE.BmobPostCommentIncrement(post);
+
+        Bmob.INSTANCE.updateUserLv(10);
 
     }
 

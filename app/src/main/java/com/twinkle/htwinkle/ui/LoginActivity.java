@@ -11,13 +11,14 @@ import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.base.BaseActivity;
 import com.twinkle.htwinkle.dialog.MyDialog;
 import com.twinkle.htwinkle.entity.User;
-import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.init.Utils;
+import com.twinkle.htwinkle.net.Bmob;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
-import static com.twinkle.htwinkle.init.Constant.*;
+import static com.twinkle.htwinkle.init.Constant.Modify_Pass;
+import static com.twinkle.htwinkle.init.Constant.Register_;
 
 public class LoginActivity extends BaseActivity implements Bmob.LoginListener {
 
@@ -37,7 +38,7 @@ public class LoginActivity extends BaseActivity implements Bmob.LoginListener {
 
         if (checkLogin(tel, pass)) {
 
-            myDialog = new MyDialog(this,R.style.AlertDialog);
+            myDialog = new MyDialog(this, R.style.AlertDialog);
             myDialog.show();
 
             Bmob.INSTANCE.setLoginListener(this);
@@ -93,7 +94,7 @@ public class LoginActivity extends BaseActivity implements Bmob.LoginListener {
 
     @Override
     public void initView() {
-      getUser();
+        getUser();
     }
 
     @Override

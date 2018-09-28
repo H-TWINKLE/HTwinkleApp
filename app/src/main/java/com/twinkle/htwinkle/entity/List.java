@@ -5,7 +5,7 @@ import org.xutils.db.annotation.Column;
 import org.xutils.db.annotation.Table;
 
 @Table(name = "List")
-public  class List {
+public class List {
 
 
     @Column(name = "abort")

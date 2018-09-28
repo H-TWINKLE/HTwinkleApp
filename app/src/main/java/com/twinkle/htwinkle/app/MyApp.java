@@ -7,7 +7,6 @@ import com.twinkle.htwinkle.init.Constant;
 import org.xutils.x;
 
 import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobConfig;
 
 public class MyApp extends Application {
 

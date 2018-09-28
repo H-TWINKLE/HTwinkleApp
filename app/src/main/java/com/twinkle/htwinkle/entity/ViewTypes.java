@@ -10,7 +10,7 @@ public class ViewTypes {
     private Integer type;
     private String menuTitle;
     private int menuIcon;
-    private  boolean newTip;
+    private boolean newTip;
 
     {
         newTip = false;

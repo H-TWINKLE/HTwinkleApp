@@ -6,10 +6,10 @@ import android.content.Intent;
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.adapter.IndexAdapter;
 import com.twinkle.htwinkle.base.BaseRefreshActivity;
-import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.dialog.DialogInShowBigPic;
 import com.twinkle.htwinkle.entity.Post;
 import com.twinkle.htwinkle.entity.User;
+import com.twinkle.htwinkle.net.Bmob;
 
 import java.util.List;
 
@@ -94,6 +94,10 @@ public class TopicPostActivity extends BaseRefreshActivity<Post, IndexAdapter> i
     @Override
     public void onBmobFindPostByTopicListenerSuccess(List<Post> list) {
         onSuccessGetList(list);
+
+        if (adapter.getData().size() == 0) {
+            adapter.setEmptyView(R.layout.base_content_empty);
+        }
     }
 
     @Override

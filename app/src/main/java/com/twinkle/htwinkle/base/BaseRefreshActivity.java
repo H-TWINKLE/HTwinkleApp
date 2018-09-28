@@ -6,14 +6,12 @@ import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.entity.Post;
-import com.twinkle.htwinkle.ui.CollectActivity;
 import com.twinkle.htwinkle.ui.DetailPostActivity;
 import com.twinkle.htwinkle.view.IndexLoadMoreView;
 

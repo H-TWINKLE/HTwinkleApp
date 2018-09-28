@@ -2,8 +2,6 @@ package com.twinkle.htwinkle.dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.twinkle.htwinkle.R;
@@ -11,8 +9,6 @@ import com.twinkle.htwinkle.view.SmoothImageView;
 
 public class DialogInShowBigPic {
 
-
-    private String url;
 
     private AlertDialog alertDialog;
 
@@ -23,9 +19,7 @@ public class DialogInShowBigPic {
         smoothImageView = new SmoothImageView(context);
         smoothImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
-        smoothImageView.setOnClickListener((e) -> {
-            alertDialog.dismiss();
-        });
+        smoothImageView.setOnClickListener((e) -> alertDialog.dismiss());
 
         alertDialog = new AlertDialog.Builder(context, R.style.AlertDialog)
                 .setView(smoothImageView)
@@ -35,7 +29,6 @@ public class DialogInShowBigPic {
 
 
     public void setUrl(String url) {
-        this.url = url;
         smoothImageView.setImageUrl(url);
 
     }
@@ -44,12 +37,5 @@ public class DialogInShowBigPic {
 
         alertDialog.show();
     }
-
-
-    public void onDismiss() {
-
-        alertDialog.dismiss();
-    }
-
 
 }

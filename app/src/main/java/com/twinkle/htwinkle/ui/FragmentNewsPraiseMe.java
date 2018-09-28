@@ -18,13 +18,10 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.Toast;
 
 import com.twinkle.htwinkle.R;
-
 import com.twinkle.htwinkle.adapter.PraiseMeAdapter;
-import com.twinkle.htwinkle.net.Bmob;
-
 import com.twinkle.htwinkle.entity.Praise;
-
 import com.twinkle.htwinkle.listener.HidingScrollListener;
+import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.view.IndexLoadMoreView;
 
 import org.xutils.view.annotation.ContentView;
@@ -104,9 +101,7 @@ public class FragmentNewsPraiseMe extends Fragment implements Bmob.BmobGetListPr
         adapter = new PraiseMeAdapter(R.layout.item_news_praise, list);
         adapter.setLoadMoreView(new IndexLoadMoreView());
         adapter.setEnableLoadMore(false);
-        adapter.setOnItemClickListener((adapter, view, position) -> {
-            onItemClick(position);
-        });
+        adapter.setOnItemClickListener((adapter, view, position) -> onItemClick(position));
 
         fragment_news_p_me_rv.setLayoutManager(new LinearLayoutManager(getContext()));
         fragment_news_p_me_rv.setAdapter(adapter);
@@ -184,5 +179,10 @@ public class FragmentNewsPraiseMe extends Fragment implements Bmob.BmobGetListPr
         } else {
             adapter.loadMoreComplete();
         }
+
+        if (adapter.getData().size() == 0) {
+            adapter.setEmptyView(R.layout.base_content_empty);
+        }
+
     }
 }

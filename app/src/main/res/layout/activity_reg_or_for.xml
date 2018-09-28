@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.RegOrForActivity">
 
-    <include layout="@layout/base_toolbar"/>
+    <include layout="@layout/base_toolbar" />
 
     <TextView
         android:id="@+id/rf_tv_tip"
@@ -27,7 +27,7 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="请输入我们发送到110的验证码"/>
+        tools:text="请输入我们发送到110的验证码" />
 
     <EditText
         android:id="@+id/rf_et_input"

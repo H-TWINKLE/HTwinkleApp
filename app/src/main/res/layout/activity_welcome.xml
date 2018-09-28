@@ -1,37 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/wel_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/wel_cl"
     tools:context=".ui.WelcomeActivity">
 
     <com.loopj.android.image.SmartImageView
-        android:id="@+id/wel_img"
+        android:id="@+id/wel_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:alpha="0.2"
         android:contentDescription="@null"
         android:scaleType="fitXY"
         android:src="@drawable/wel" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.loopj.android.image.SmartImageView
+            android:id="@+id/wel_head"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="150dp"
+            android:contentDescription="@null"
+            tools:src="@drawable/music" />
+
+        <TextView
+            android:id="@+id/wel_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:textColor="#454444"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            tools:text="@string/user_reg" />
+
+
+        <TextView
+            android:id="@+id/wel_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
+            android:textColor="#252525"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="@string/lyric" />
+
+        <TextView
+            android:id="@+id/wel_comment_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:gravity="end"
+            android:textColor="#252525"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            tools:text="@string/re_get_code" />
+
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/wel_bt"
         android:layout_width="80dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/buttonshape"
         android:textColor="#000"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/wel_img"
-        app:layout_constraintEnd_toEndOf="@+id/wel_img"
-        app:layout_constraintHorizontal_bias="0.029"
-        app:layout_constraintStart_toStartOf="@+id/wel_img"
-        app:layout_constraintTop_toTopOf="@+id/wel_img"
-        app:layout_constraintVertical_bias="0.984"
-        tools:text="@string/skip"/>
+        tools:text="@string/skip" />
 
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

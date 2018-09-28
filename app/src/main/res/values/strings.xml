@@ -3,6 +3,7 @@
     <string name="version">version - %1$d</string>
     <string name="you_have_praise">您已经点过赞啦！</string>
     <string name="get_error">获取失败</string>
+    <string name="love">曾经沧海难为水\n除却巫山不是云</string>
 
     <!--Welcome页面-->
     <string name="skip">跳过</string>
@@ -36,6 +37,7 @@
     <string name="pass1">请输入密码</string>
     <string name="pass2">请再次输入密码</string>
     <string name="pass_not_equal">两次密码不同，请重新输入</string>
+    <string name="register_success">注册成功，请登录</string>
     <string name="modify_pass_success">修改密码成功</string>
     <string name="modify_user_info_success">修改信息成功</string>
     <string name="modify_user_info_failure">修改信息失败</string>
@@ -48,6 +50,8 @@
     <string name="send_comment_failure">发布评论失败</string>
     <string name="praise_success">点赞成功</string>
     <string name="praise_cancel">取消点赞</string>
+    <string name="work_is_finish">恭喜你，作业都做完了！</string>
+    <string name="pass_6">密码最低6位数</string>
 
 
     <!--main页面-->
@@ -75,13 +79,14 @@
         <item>我的网络教学平台密码</item>
         <item>我的教务管理系统密码</item>
         <item>我的经验</item>
+        <item>修改密码</item>
     </string-array>
 
     <string name="my_coll">我的收藏</string>
 
 
     <string-array name="my_menu_user">
-        <item>个人主页</item>
+        <item>个人空间</item>
         <item>我的收藏</item>
     </string-array>
 
@@ -341,5 +346,21 @@
     <string name="qingzhi">jk47iUs7l-6Nza-HQoPNdiyY6qGkjfQX</string>
     <string name="first_message">你好，我就是高中时期那个随时随地给外国人写信的靓仔李华，初次见面，请多关照！</string>
     <string name="listen">倾听</string>
+    <string name="click_me_to_modify_pass">点我修改密码</string>
+
+    <string name="message_notification_title_template">Message: %1$s</string>
+
+    <!-- TODO: remove this placeholder text -->
+    <string name="message_notification_placeholder_text_template">You said %1$s and lorem ipsum
+        dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit vel
+        semper venenatis, magna odio volutpat velit, at ullamcorper nulla lacus sed turpis.
+        Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed nisl sem, ullamcorper
+        ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis
+        viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec
+        tortor.
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
 
 </resources>

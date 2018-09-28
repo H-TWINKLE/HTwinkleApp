@@ -6,7 +6,6 @@
 
     <include layout="@layout/main_content" />
 
-    <include layout="@layout/main_side"
-        />
+    <include layout="@layout/main_side" />
 
 </android.support.v4.widget.DrawerLayout>

@@ -1,7 +1,7 @@
 package com.twinkle.htwinkle.ui;
 
 import android.app.Activity;
-import android.util.Log;
+import android.widget.Toast;
 
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.adapter.BaseTitleEolAdapter;
@@ -10,6 +10,7 @@ import com.twinkle.htwinkle.dialog.MyDialog;
 import com.twinkle.htwinkle.entity.Eol;
 import com.twinkle.htwinkle.entity.List;
 import com.twinkle.htwinkle.entity.User;
+import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.net.Twinkle;
 
 import java.util.ArrayList;
@@ -43,6 +44,8 @@ public class EolSubjectActivity extends BaseRefreshActivity<List, BaseTitleEolAd
 
         Twinkle.INSTANCE.setJwglListener(this);
 
+        Bmob.INSTANCE.updateUserLv(50);
+
         list = Twinkle.INSTANCE.getEolSubject(BmobUser.getCurrentUser(User.class));
 
         if (list == null || list.size() == 0) {
@@ -61,18 +64,24 @@ public class EolSubjectActivity extends BaseRefreshActivity<List, BaseTitleEolAd
     @Override
     public void onJwglListenerSuccess(Object t) {
 
-        Eol j = (Eol) t;
+        dialog.dismiss();
 
+        Eol j = (Eol) t;
         java.util.List<List> list = new ArrayList<>();
+
+        if (j.getList() == null) {
+            Toast.makeText(EolSubjectActivity.this, R.string.work_is_finish, Toast.LENGTH_SHORT).show();
+            adapter.setEmptyView(R.layout.base_content_empty);
+            return;
+        }
 
         for (java.util.List<List> aList : j.getList()) {
             list.addAll(aList);
         }
 
-        dialog.dismiss();
         onSuccessGetList(list);
-
         adapter.setEnableLoadMore(false);
+
     }
 
     @Override

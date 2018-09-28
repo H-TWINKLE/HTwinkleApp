@@ -1,7 +1,5 @@
 package com.twinkle.htwinkle.init;
 
-import android.app.Application;
-
 import com.twinkle.htwinkle.R;
 
 public class Constant {
@@ -16,17 +14,17 @@ public class Constant {
 
     public static final int REQUEST_CODE = 10003;  //回调id
 
-    public static final int[] my_menu_user_icon = { R.drawable.user, R.drawable.coll};
+    public static final int[] my_menu_user_icon = {R.drawable.user, R.drawable.coll};
 
-    public static final int[] my_menu_jwgl_icon = { R.drawable.info, R.drawable.jwgl_ttb, R.drawable.jwgl_score};
+    public static final int[] my_menu_jwgl_icon = {R.drawable.info, R.drawable.jwgl_ttb, R.drawable.jwgl_score};
 
-    public static final int[] my_menu_eol_icon = { R.drawable.info, R.drawable.eol_work};
+    public static final int[] my_menu_eol_icon = {R.drawable.info, R.drawable.eol_work};
 
-    public static final int[] my_menu_one_icon = { R.drawable.onearticle, R.drawable.onemusic,R.drawable.onepic};
+    public static final int[] my_menu_one_icon = {R.drawable.onearticle, R.drawable.onemusic, R.drawable.onepic};
 
-    public static final int[] my_menu_tool_icon = { R.drawable.toolxiaohua, R.drawable.tooldiannao};
+    public static final int[] my_menu_tool_icon = {R.drawable.toolxiaohua, R.drawable.tooldiannao};
 
-    public static final int[] my_menu_setting_icon = { R.drawable.setting, R.drawable.logout};
+    public static final int[] my_menu_setting_icon = {R.drawable.setting, R.drawable.logout};
 
     public static final String[] my_pic_url = {
             "http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=5e310a4ddb09b3deffb2ec2ba4d606f4/9d82d158ccbf6c81887581cdb63eb13533fa4050.jpg",
@@ -49,13 +47,13 @@ public class Constant {
     }; //types_title
 
     public static final int[] my_types_icon = {
-            R.drawable.type1,R.drawable.type2,R.drawable.type3,R.drawable.type4,
-            R.drawable.type5,R.drawable.type6,R.drawable.type7,R.drawable.type8,
+            R.drawable.type1, R.drawable.type2, R.drawable.type3, R.drawable.type4,
+            R.drawable.type5, R.drawable.type6, R.drawable.type7, R.drawable.type8,
     }; //types_icon
 
     public final static String BOMBKEY = "efcec7fdecd3aefe199792559b33bf1b";
 
-    public final static  String  RESTKEY = "2f6e22943cb0acd32ca6c5d0dfa07b08";
+    public final static String RESTKEY = "2f6e22943cb0acd32ca6c5d0dfa07b08";
 
     public final static String MASTERKEY = "610b06bc1d804857ad71e8faccaebd14";
 
@@ -67,7 +65,7 @@ public class Constant {
 
     public final static String EOLURL = "http://htwinkle.cn/Twinkle/eol/api";
 
-    public final static  String JWGL = "http://jwgl.cdnu.edu.cn/";
+    public final static String JWGL = "http://jwgl.cdnu.edu.cn/";
 
     public final static String ROBOTURL = "http://www.tuling123.com/openapi/api?key=057c818d3b1b430faa4ee25b638a5b7c";
 
@@ -77,6 +75,6 @@ public class Constant {
 
     public final static String EVERYONEMUSIC = "http://htwinkle.cn/Twinkle/netmusic/api";
 
-    public final static  String NetMusicUrl = "https://music.163.com/#/song?id=";
+    public final static String NetMusicUrl = "https://music.163.com/#/song?id=";
 
 }

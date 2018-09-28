@@ -6,10 +6,10 @@
         android:title="@string/pref_title_jwgl" />
 
     <!--<ListPreference-->
-       <!--android:dependency="setting_jwgl"-->
-        <!--android:key="pref_title_jwgl_child"-->
-        <!--android:entries="@array/my_menu_jwgl"-->
-        <!--/>-->
+    <!--android:dependency="setting_jwgl"-->
+    <!--android:key="pref_title_jwgl_child"-->
+    <!--android:entries="@array/my_menu_jwgl"-->
+    <!--/>-->
 
     <SwitchPreference
         android:defaultValue="false"

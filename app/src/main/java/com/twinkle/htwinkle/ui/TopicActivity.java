@@ -50,16 +50,16 @@ public class TopicActivity extends BaseActivity implements Inputtips.InputtipsLi
 
     @Override
     public void initData() {
-        tb_topic.setNavigationOnClickListener(e->finish());
+        tb_topic.setNavigationOnClickListener(e -> finish());
         setAutoEditListener();
     }
 
 
-    private  void setItemListener(){
+    private void setItemListener() {
         actv_topic.setOnItemClickListener(((parent, view, position, id) -> {
             Intent intent = new Intent();
-            intent.putExtra("local",str[position]);
-            TopicActivity.this.setResult(REQUEST_CODE,intent);
+            intent.putExtra("local", str[position]);
+            TopicActivity.this.setResult(REQUEST_CODE, intent);
             TopicActivity.this.finish();
         }));
     }
@@ -70,7 +70,7 @@ public class TopicActivity extends BaseActivity implements Inputtips.InputtipsLi
     }
 
 
-    private void setAutoEditListener(){
+    private void setAutoEditListener() {
         actv_topic.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -79,14 +79,15 @@ public class TopicActivity extends BaseActivity implements Inputtips.InputtipsLi
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String text = actv_topic.getText().toString();
-                if(!TextUtils.isEmpty(text)){
-                    InputtipsQuery inputquery = new InputtipsQuery(text,"");
+                if (!TextUtils.isEmpty(text)) {
+                    InputtipsQuery inputquery = new InputtipsQuery(text, "");
                     inputquery.setCityLimit(true);//限制在当前城市
                     Inputtips inputTips = new Inputtips(TopicActivity.this, inputquery);
                     inputTips.setInputtipsListener(TopicActivity.this);
                     inputTips.requestInputtipsAsyn();
                 }
             }
+
             @Override
             public void afterTextChanged(Editable s) {
 
@@ -97,10 +98,10 @@ public class TopicActivity extends BaseActivity implements Inputtips.InputtipsLi
     @Override
     public void onGetInputtips(List<Tip> list, int i) {
         str = new String[list.size()];
-        for(int x=0;x<list.size();x++){
-            str[x] = list.get(x).getName()+" - "+list.get(x).getAddress()+" - "+list.get(x).getDistrict();
+        for (int x = 0; x < list.size(); x++) {
+            str[x] = list.get(x).getName() + " - " + list.get(x).getAddress() + " - " + list.get(x).getDistrict();
         }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(TopicActivity.this,android.R.layout.simple_dropdown_item_1line,str);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(TopicActivity.this, android.R.layout.simple_dropdown_item_1line, str);
         actv_topic.setAdapter(arrayAdapter);
         arrayAdapter.notifyDataSetChanged();
         setItemListener();

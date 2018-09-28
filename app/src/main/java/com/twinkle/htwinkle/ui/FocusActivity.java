@@ -5,14 +5,13 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
+
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.adapter.FocusAdapter;
 import com.twinkle.htwinkle.base.BaseActivity;
-import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.entity.Focus;
+import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.view.IndexLoadMoreView;
 
 import org.xutils.view.annotation.ViewInject;
@@ -20,9 +19,6 @@ import org.xutils.view.annotation.ViewInject;
 import java.util.List;
 
 public class FocusActivity extends BaseActivity implements Bmob.BmobGetListUserFocusListener, Bmob.BmobDisableUserFocusListener {
-
-    @ViewInject(value = R.id.base_empty_line_view)
-    private LinearLayout base_empty_line_view;
 
     @ViewInject(value = R.id.focus_srf)
     private SwipeRefreshLayout focus_srf;
@@ -138,9 +134,7 @@ public class FocusActivity extends BaseActivity implements Bmob.BmobGetListUserF
         current++;
 
         if (adapter.getData().size() == 0) {
-            base_empty_line_view.setVisibility(View.VISIBLE);
-        } else {
-            base_empty_line_view.setVisibility(View.GONE);
+            adapter.setEmptyView(R.layout.base_content_empty);
         }
 
         if (list.size() == 0) {

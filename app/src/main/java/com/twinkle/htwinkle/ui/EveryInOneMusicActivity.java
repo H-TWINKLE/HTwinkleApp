@@ -17,6 +17,7 @@ import com.twinkle.htwinkle.dialog.MyDialog;
 import com.twinkle.htwinkle.entity.EveryMusic;
 import com.twinkle.htwinkle.init.Constant;
 import com.twinkle.htwinkle.init.Utils;
+import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.net.Twinkle;
 
 import org.xutils.view.annotation.Event;
@@ -81,6 +82,8 @@ public class EveryInOneMusicActivity extends BaseActivity implements Twinkle.Jwg
 
         myDialog = new MyDialog(EveryInOneMusicActivity.this, R.style.AlertDialog, true);
 
+        Bmob.INSTANCE.updateUserLv(10);
+
         everyMusic = Twinkle.INSTANCE.readOneMusic();
 
         if (everyMusic == null) {
@@ -112,9 +115,7 @@ public class EveryInOneMusicActivity extends BaseActivity implements Twinkle.Jwg
 
     @Override
     public void initView() {
-        one_music_toolbar.setNavigationOnClickListener(view -> {
-            this.finish();
-        });
+        one_music_toolbar.setNavigationOnClickListener(view -> this.finish());
     }
 
     @Override
