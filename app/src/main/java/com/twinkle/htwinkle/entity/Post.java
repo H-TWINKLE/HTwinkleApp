@@ -1,11 +1,17 @@
-package com.twinkle.htwinkle.bean;
+package com.twinkle.htwinkle.entity;
+
+import com.chad.library.adapter.base.entity.MultiItemEntity;
 
 import java.util.List;
 
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobRelation;
 
-public class Post extends BmobObject{
+public class Post extends BmobObject implements MultiItemEntity {
+
+    public static final int TEXT = 1;
+    public static final int IMG_TEXT = 2;
+    public static final int ONE_ING_TEXT = 3;
 
     private String title;
     private User author;
@@ -18,6 +24,49 @@ public class Post extends BmobObject{
     private Integer likenum;
     private Integer commentnum;
     private Integer hot;
+    private Integer types;
+    private String url;
+    private String newsdate;
+
+    public String getNewsdate() {
+        return newsdate;
+    }
+
+    public void setNewsdate(String newsdate) {
+        this.newsdate = newsdate;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Post() {
+
+    }
+
+    public Post(String objectId) {
+        setObjectId(objectId);
+    }
+
+
+    public Post(Integer types) {
+        this.types = types;
+    }
+
+    public Integer getTypes() {
+        if (types == null || types == 0) {
+            return 1;
+        }
+        return types;
+    }
+
+    public void setTypes(Integer types) {
+        this.types = types;
+    }
 
     public String getTitle() {
         return title;
@@ -108,7 +157,12 @@ public class Post extends BmobObject{
     }
 
 
+    @Override
+    public int getItemType() {
 
-
-
+        if (types == null) {
+            return 1;
+        }
+        return types;
+    }
 }

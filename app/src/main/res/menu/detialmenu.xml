@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_collection"
+        android:title="@string/menu_collection" />
+    <item
+        android:id="@+id/menu_focus"
+        android:title="@string/menu_focus" />
+    <item
+        android:id="@+id/menu_praise"
+        android:title="@string/menu_praise" />
+    <item
+        android:id="@+id/menu_look"
+        android:title="@string/look"/>
+    <item
+        android:id="@+id/menu_delete"
+        android:title="@string/delete"/>
+</menu>

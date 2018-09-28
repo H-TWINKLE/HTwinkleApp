@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/base_item_index_content_user" />
+
+
+                <TextView
+                    android:textStyle="bold"
+                    android:id="@+id/detail_tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:textColor="#141521"
+                    android:textSize="12sp"
+                    tools:text="@string/lyric" />
+
+                <TextView
+                    android:id="@+id/detail_tv_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:textColor="#393838"
+                    android:textSize="15sp"
+                    tools:text="@string/lyric" />
+
+
+                <com.loopj.android.image.SmartImageView
+                    android:id="@+id/detail_siv_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:contentDescription="@null"
+                    android:padding="10dp"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/test"
+                    tools:visibility="gone" />
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/detail_rv_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    tools:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/detail_tv_newsdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:textColor="#59609c"
+                    android:textSize="12sp"
+                    tools:text="@string/lyric" />
+
+
+                <TextView
+                    android:id="@+id/detail_tv_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:textColor="#2ea6b9"
+                    android:textSize="15sp"
+                    tools:text="@string/lyric" />
+
+
+                <include layout="@layout/base_item_index_content_tools" />
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+
+    </LinearLayout>
+
+    <include
+        android:layout_marginTop="10dp"
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        layout="@layout/base_div"/>
+
+</LinearLayout>

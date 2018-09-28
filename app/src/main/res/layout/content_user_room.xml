@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/user_room_siv_header"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/test" />
+
+    <TextView
+        android:id="@+id/user_room_tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:maxLines="1"
+        android:textColor="#434242"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:text="@string/user_reg" />
+
+
+    <TextView
+        android:id="@+id/user_room_tv_say"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="140dp"
+        android:maxLines="1"
+        android:textColor="#2e3b8b"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        tools:text="@string/user_reg" />
+
+    <include
+        layout="@layout/base_div"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="220dp" />
+
+
+</android.support.design.widget.CoordinatorLayout>

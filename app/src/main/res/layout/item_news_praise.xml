@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|start"
+        android:orientation="horizontal">
+
+        <com.loopj.android.image.SmartImageView
+            android:id="@+id/me_item_siv_header"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@null"
+            android:src="@drawable/logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/me_item_tv_nick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#060606"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    tools:text="笔法科技" />
+
+                <TextView
+                    android:id="@+id/me_item_tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:textColor="#060606"
+                    android:textSize="12sp"
+                    tools:text="1月18日发布" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/praise_post"
+                android:textColor="#da613f"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="35dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/post"
+                    android:textColor="#199999"
+                    android:textSize="15sp"
+                    android:textStyle="italic|bold" />
+
+                <TextView
+                    android:id="@+id/me_item_tv_post_comment_my"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="15dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:textColor="#5c5757"
+                    android:textSize="13sp"
+                    tools:text="@string/lyric" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/base_div"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp" />
+
+</LinearLayout>
+
+

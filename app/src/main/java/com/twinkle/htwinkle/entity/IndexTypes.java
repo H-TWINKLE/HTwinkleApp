@@ -1,4 +1,4 @@
-package com.twinkle.htwinkle.bean;
+package com.twinkle.htwinkle.entity;
 
 public class IndexTypes {
     private Integer icon;

@@ -3,7 +3,6 @@ package com.twinkle.htwinkle.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,8 +10,8 @@ import android.widget.Toast;
 
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.base.BaseActivity;
-import com.twinkle.htwinkle.bean.User;
-import com.twinkle.htwinkle.bmob.Bmob;
+import com.twinkle.htwinkle.entity.User;
+import com.twinkle.htwinkle.net.Bmob;
 
 import static com.twinkle.htwinkle.init.Constant.*;
 
@@ -23,9 +22,7 @@ import org.xutils.view.annotation.ViewInject;
 public class SetPassActivity extends BaseActivity implements Bmob.RegisterListener, Bmob.ModifyPassWithoutLoginListener {
 
     private int code;
-
     private String tel;
-
     private User user;
 
     @ViewInject(value = R.id.sp_et_pass1)
@@ -101,11 +98,11 @@ public class SetPassActivity extends BaseActivity implements Bmob.RegisterListen
 
     @Override
     public void initView() {
-        setToolBarFlag(true);
     }
 
     @Override
     public void initData() {
+        setToolBarFlag(true);
         code = getIntent().getIntExtra("flag", Default_Int);
         tel = getIntent().getStringExtra("tel");
         user = (User)getIntent().getSerializableExtra("user");

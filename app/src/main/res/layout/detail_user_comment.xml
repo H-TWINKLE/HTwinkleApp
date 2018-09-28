@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:padding="10dp"
+        android:background="#fcfcfc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.loopj.android.image.SmartImageView
+            android:id="@+id/detail_user_comment_siv_logo"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            tools:src="@drawable/logo" />
+
+        <EditText
+            android:inputType="text"
+            android:id="@+id/detail_user_comment_et_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:hint="@string/say"
+            android:textColorHint="#767575"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

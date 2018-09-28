@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.JwglTtbActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/base_toolbar" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center|top"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center|top"
+                    android:text="@string/yi"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center|top"
+                    android:text="@string/er"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center|top"
+                    android:text="@string/san"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center|top"
+                    android:text="@string/si"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center|top"
+                    android:text="@string/wu"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--显示多少节课-->
+
+                <ScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="110dp"
+                            android:gravity="center"
+                            android:text="@string/yi"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="110dp"
+                            android:gravity="center"
+                            android:text="@string/er"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="110dp"
+                            android:gravity="center"
+                            android:text="@string/san"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="110dp"
+                            android:gravity="center"
+                            android:text="@string/si"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="110dp"
+                            android:gravity="center"
+                            android:text="@string/wu"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="110dp"
+                            android:gravity="center"
+                            android:text="@string/liu"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#E5E5E5" />
+
+                <GridView
+                    android:id="@+id/jwgl_score_gv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#E5E5E5"
+                    android:horizontalSpacing="1dp"
+                    android:numColumns="5"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="1dp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <include
+            layout="@layout/base_content_empty"
+            android:visibility="gone" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</LinearLayout>

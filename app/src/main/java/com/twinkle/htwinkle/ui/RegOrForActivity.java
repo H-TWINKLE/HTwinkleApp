@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +14,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.mob.MobSDK;
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.base.BaseActivity;
-import com.twinkle.htwinkle.bean.User;
-import com.twinkle.htwinkle.bmob.Bmob;
+import com.twinkle.htwinkle.entity.User;
+import com.twinkle.htwinkle.net.Bmob;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -24,7 +23,6 @@ import org.xutils.view.annotation.ViewInject;
 import java.util.List;
 import java.util.Locale;
 
-import cn.bmob.v3.BmobUser;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
@@ -66,7 +64,6 @@ public class RegOrForActivity extends BaseActivity implements Bmob.CheckUserList
 
         } else {
             if (checkTel(text)) {
-                //  sendCode(text);
                 tel = text;
                 Bmob.INSTANCE.setCheckUserListener(this);
                 Bmob.INSTANCE.BmobCheckUser(text);
@@ -99,7 +96,14 @@ public class RegOrForActivity extends BaseActivity implements Bmob.CheckUserList
     @Override
     public void initView() {
 
+    }
+
+    @Override
+    public void initData() {
+
         setToolBarFlag(true);
+
+        code = getIntent().getIntExtra("flag", Default_Int);
 
         switch (code) {
             case Register_:
@@ -112,11 +116,6 @@ public class RegOrForActivity extends BaseActivity implements Bmob.CheckUserList
                 setToolBarTitle(R.string.tests);
                 break;
         }
-    }
-
-    @Override
-    public void initData() {
-        code = getIntent().getIntExtra("flag", Default_Int);
     }
 
     private boolean checkTel(String tel) {

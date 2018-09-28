@@ -4,15 +4,29 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+
 import com.twinkle.htwinkle.R;
+
 import org.xutils.x;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     private int toolBarTitle;
 
+    private String toolBarTitles;
+
     private boolean toolBarFlag = false;
 
+    private Toolbar baseToolBar;
+
+    public String getToolBarTitles() {
+        return toolBarTitles;
+    }
+
+    public void setToolBarTitles(String toolBarTitles) {
+        this.toolBarTitles = toolBarTitles;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,27 +38,40 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         initData();
 
+        setToolBar();
+
         initView();
 
-        setToolBar();
     }
 
-    private void setToolBar(){
-        if(toolBarFlag){
-         Toolbar comm_tb = findViewById(R.id.comm_tb);
-         comm_tb.setTitle(toolBarTitle);
-         comm_tb.setNavigationOnClickListener(e-> finish());
+    private void setToolBar() {
+        if (toolBarFlag) {
+
+            baseToolBar = findViewById(R.id.comm_tb);
+
+            if (!TextUtils.isEmpty(toolBarTitles)) {
+                baseToolBar.setTitle(toolBarTitles);
+            } else {
+                baseToolBar.setTitle(toolBarTitle);
+            }
+
+            this.setSupportActionBar(baseToolBar);
+            baseToolBar.setNavigationOnClickListener(e -> this.finish());
         }
     }
 
+    public Toolbar getBaseToolBar() {
+        return baseToolBar;
+    }
 
     public abstract int setLayout();
 
     public abstract Activity setActivity();
 
+    public abstract void initData();
+
     public abstract void initView();
 
-    public abstract void initData();
 
     public void setToolBarTitle(int toolBarTitle) {
         this.toolBarTitle = toolBarTitle;

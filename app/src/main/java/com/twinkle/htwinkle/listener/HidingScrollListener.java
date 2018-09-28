@@ -1,4 +1,4 @@
-package com.twinkle.htwinkle.adapter;
+package com.twinkle.htwinkle.listener;
 
 import android.support.v7.widget.RecyclerView;
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/item_robot_iv_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        android:contentDescription="@null"
+        android:src="@drawable/robot" />
+
+    <TextView
+        android:id="@+id/item_robot_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toEndOf="@id/item_robot_iv_icon"
+        android:background="@drawable/chat_left"
+        android:text="@string/first_message" />
+
+    <TextView
+        android:id="@+id/item_robot_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/item_robot_iv_icon"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_toEndOf="@id/item_robot_iv_icon"
+        android:textSize="@dimen/sp_12"
+        tools:text="2018-05-06 14:25:66" />
+
+
+</RelativeLayout>

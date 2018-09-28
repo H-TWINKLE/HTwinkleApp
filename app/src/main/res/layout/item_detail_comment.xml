@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <include layout="@layout/base_item_index_content_user"/>
+
+    <TextView
+        android:id="@+id/item_detail_comment_tv"
+        android:layout_marginTop="-20dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:textSize="13sp"
+        android:textColor="#2e2e2e"
+        android:layout_marginStart="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/lyric"/>
+
+    <include
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        layout="@layout/base_div"/>
+
+
+</LinearLayout>

@@ -32,6 +32,7 @@
     <application
         android:name=".app.MyApp"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -44,6 +45,7 @@
         <activity android:name=".ui.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -65,6 +67,21 @@
             android:label="@string/title_activity_settings"
             android:theme="@style/Theme.AppCompat.Light" />
         <activity android:name=".ui.InfoActivity" />
+        <activity android:name=".ui.DetailPostActivity" />
+        <activity android:name=".ui.FocusActivity" />
+        <activity android:name=".ui.CollectActivity" />
+        <activity android:name=".ui.TopicPostActivity" />
+        <activity
+            android:name=".ui.UserRoomActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ui.JwglInfoActivity" />
+        <activity android:name=".ui.JwglScoreActivity" />
+        <activity android:name=".ui.JwglTtbActivity" />
+        <activity android:name=".ui.EolInfoActivity" />
+        <activity android:name=".ui.EolSubjectActivity" />
+        <activity android:name=".ui.RobotActivity" />
+        <activity android:name=".ui.EveryInOneMusicActivity" />
+        <activity android:name=".ui.EveryArticleActivity"></activity>
     </application>
 
 </manifest>

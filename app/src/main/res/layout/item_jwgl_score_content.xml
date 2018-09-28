@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:gravity="center|end"
+        android:padding="10dp"
+        android:id="@+id/item_jwgl_score_llayout_click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/item_score_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:textColor="#1f2886"
+            android:textStyle="bold"
+            tools:text="@string/score_name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:text="@string/score_chengji"
+            android:textColor="#403e3e" />
+
+        <TextView
+            android:id="@+id/item_score_chenji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:textColor="#891610"
+            android:textStyle="bold"
+            tools:text="@string/score_name" />
+
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@null"
+            app:srcCompat="@drawable/ic_keyboard_arrow_down_black_36dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/item_jwgl_score_llayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <include
+                layout="@layout/base_div"
+                android:layout_width="2dp"
+                android:layout_height="230dp"
+                android:layout_marginStart="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:baselineAligned="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_xuenian"
+                        android:textColor="#403e3e" />
+
+                    <TextView
+                        android:id="@+id/socre_xuenian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#1f2886"
+                        android:textStyle="bold"
+                        tools:text="@string/score_name" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_term"
+                        android:textColor="#403e3e" />
+
+                    <TextView
+                        android:id="@+id/score_xueqi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#1f2886"
+                        android:textStyle="bold"
+                        tools:text="@string/score_name" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:baselineAligned="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_kechengdaima"
+                        android:textColor="#403e3e" />
+
+                    <TextView
+                        android:id="@+id/score_daima"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#1f2886"
+                        android:textStyle="bold"
+                        tools:text="@string/score_name" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_xueyuan"
+                        android:textColor="#403e3e" />
+
+                    <TextView
+                        android:id="@+id/xueyuan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#1f2886"
+                        android:textStyle="bold"
+                        tools:text="@string/score_name" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:baselineAligned="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_kechengguishu"
+                        android:textColor="#403e3e" />
+
+                    <TextView
+                        android:id="@+id/guishu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#1f2886"
+                        android:textStyle="bold"
+                        tools:text="@string/score_name" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_kechengxingzhi"
+                        android:textColor="#403e3e" />
+
+                    <TextView
+                        android:id="@+id/xingzhi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#1f2886"
+                        android:textStyle="bold"
+                        tools:text="@string/score_name" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:baselineAligned="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_xuefen"
+                        android:textColor="#403e3e" />
+
+                    <TextView
+                        android:id="@+id/xuefen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#1f2886"
+                        android:textStyle="bold"
+                        tools:text="@string/score_name" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_jidian"
+                        android:textColor="#403e3e" />
+
+                    <TextView
+                        android:id="@+id/jidian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#1f2886"
+                        android:textStyle="bold"
+                        tools:text="@string/score_name" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:baselineAligned="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_chongxiubiaoji"
+                        android:textColor="#403e3e" />
+
+                    <TextView
+                        android:id="@+id/chongxiubiaoji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#1f2886"
+                        android:textStyle="bold"
+                        tools:text="@string/score_name" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_cxchengji"
+                        android:textColor="#403e3e" />
+
+                    <TextView
+                        android:id="@+id/chongxiuchengji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#1f2886"
+                        android:textStyle="bold"
+                        tools:text="@string/score_name" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:baselineAligned="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_fuxiubiaoji"
+                        android:textColor="#403e3e" />
+
+                    <TextView
+                        android:id="@+id/fuxiubiaoji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#1f2886"
+                        android:textStyle="bold"
+                        tools:text="@string/score_name" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/score_bukaochengji"
+                        android:textColor="#403e3e" />
+
+                    <TextView
+                        android:id="@+id/bukaochengji"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="#1f2886"
+                        android:textStyle="bold"
+                        tools:text="@string/score_name" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <include
+        layout="@layout/base_div"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp" />
+
+
+</LinearLayout>

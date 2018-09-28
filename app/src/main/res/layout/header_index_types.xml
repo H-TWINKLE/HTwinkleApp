@@ -9,7 +9,7 @@
         android:id="@+id/main_rv_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/index_content_rv" />
+        tools:listitem="@layout/item_index_content_header" />
 
     <include
         layout="@layout/base_div"

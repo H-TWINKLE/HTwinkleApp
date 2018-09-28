@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/index_cr_iv_types"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="#2b47a4"
+        android:textStyle="italic"
+        tools:text="@string/types" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|start"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <include layout="@layout/side_content_div" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:baselineAligned="false"
+            android:gravity="center|start">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/index_item_ib_praise"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/praise"
+                    android:contentDescription="@null" />
+
+                <TextView
+                    android:id="@+id/index_item_tv_praise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:maxLines="3"
+                    android:textStyle="bold"
+                    tools:text="0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/index_item_ib_comment"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="30dp"
+                    android:background="@drawable/comment"
+                    android:contentDescription="@null" />
+
+                <TextView
+                    android:id="@+id/index_item_tv_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:maxLines="3"
+                    android:textStyle="bold"
+                    tools:text="0" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <include
+        layout="@layout/base_div"
+        android:layout_width="match_parent"
+        android:layout_height="9dp" />
+</LinearLayout>
+
+

@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.util.MultiTypeDelegate;
 import com.twinkle.htwinkle.R;
-import com.twinkle.htwinkle.bean.ViewTypes;
+import com.twinkle.htwinkle.entity.ViewTypes;
 
 import java.util.List;
 

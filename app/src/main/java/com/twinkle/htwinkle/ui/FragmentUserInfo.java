@@ -18,8 +18,8 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.twinkle.htwinkle.R;
-import com.twinkle.htwinkle.bean.User;
-import com.twinkle.htwinkle.bmob.Bmob;
+import com.twinkle.htwinkle.entity.User;
+import com.twinkle.htwinkle.net.Bmob;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -33,9 +33,6 @@ import java.util.Objects;
 
 import cn.bmob.v3.BmobUser;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 
 @ContentView(R.layout.fragment_fragment_user_info)
 public class FragmentUserInfo extends Fragment implements Bmob.ModifyUserInfoListener {

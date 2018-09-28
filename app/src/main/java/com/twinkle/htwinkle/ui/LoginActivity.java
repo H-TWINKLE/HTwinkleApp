@@ -4,16 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.base.BaseActivity;
 import com.twinkle.htwinkle.dialog.MyDialog;
-import com.twinkle.htwinkle.bean.User;
-import com.twinkle.htwinkle.bmob.Bmob;
+import com.twinkle.htwinkle.entity.User;
+import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.init.Utils;
 
 import org.xutils.view.annotation.Event;
@@ -23,20 +21,13 @@ import static com.twinkle.htwinkle.init.Constant.*;
 
 public class LoginActivity extends BaseActivity implements Bmob.LoginListener {
 
-
     private MyDialog myDialog;
-
-    @ViewInject(value = R.id.login_iv_header)
-    private ImageView login_iv_header;
 
     @ViewInject(value = R.id.login_et_tel)
     private EditText login_et_tel;
 
     @ViewInject(value = R.id.login_et_pass)
     private EditText login_et_pass;
-
-    @ViewInject(value = R.id.login_bt)
-    private Button login_bt;
 
 
     @Event(value = R.id.login_bt)

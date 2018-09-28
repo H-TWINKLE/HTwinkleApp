@@ -6,34 +6,23 @@
     tools:context=".ui.FragmentNews">
 
     <android.support.design.widget.TabLayout
+        android:id="@+id/news_tabl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top">
+        android:layout_gravity="top" />
 
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/received_comm" />
-
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/send_comm" />
-
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/received_praise" />
-
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/send_praise" />
-    </android.support.design.widget.TabLayout>
+    <include
+        android:layout_marginTop="55sp"
+        layout="@layout/base_div"
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />
 
 
-
-
+    <android.support.v4.view.ViewPager
+        android:id="@+id/news_comment_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp" />
 
 
 </FrameLayout>

@@ -15,7 +15,7 @@
             android:id="@+id/main_index_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/index_content" />
+            tools:listitem="@layout/item_index_content_one_img_text" />
 
 
     </android.support.v4.widget.SwipeRefreshLayout>

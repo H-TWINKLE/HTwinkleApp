@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".ui.EveryInOneMusicActivity">
+
+
+    <com.loopj.android.image.SmartImageView
+        android:id="@+id/one_music_siv_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.2"
+        android:scaleType="fitXY"
+        tools:src="@drawable/music" />
+
+    <Toolbar
+        android:id="@+id/one_music_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:navigationIcon="?attr/homeAsUpIndicator" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.loopj.android.image.SmartImageView
+                android:id="@+id/one_music_siv"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="100dp"
+                tools:src="@drawable/music" />
+
+            <TextView
+                android:id="@+id/one_music_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:textColor="#454444"
+                android:textSize="20sp"
+                tools:text="@string/user_reg" />
+
+
+            <TextView
+                android:id="@+id/one_music_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
+                android:textColor="#252525"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                tools:text="@string/lyric" />
+
+            <TextView
+                android:id="@+id/one_music_comment_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="end"
+                android:textColor="#252525"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                tools:text="@string/lyric" />
+
+
+            <TextView
+                android:id="@+id/one_music_open_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="30dp"
+                android:text="@string/listen"
+                android:textColor="#1073ba"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>

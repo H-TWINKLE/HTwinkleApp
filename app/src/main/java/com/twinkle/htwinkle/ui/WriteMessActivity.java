@@ -10,14 +10,12 @@ import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
 import com.jph.takephoto.app.TakePhotoActivity;
 import com.jph.takephoto.model.CropOptions;
 import com.jph.takephoto.model.TImage;
@@ -25,9 +23,9 @@ import com.jph.takephoto.model.TResult;
 import com.loopj.android.image.SmartImageView;
 import com.twinkle.htwinkle.adapter.WMessIvAdapter;
 import com.twinkle.htwinkle.R;
-import com.twinkle.htwinkle.bean.Post;
-import com.twinkle.htwinkle.bean.User;
-import com.twinkle.htwinkle.bmob.Bmob;
+import com.twinkle.htwinkle.entity.Post;
+import com.twinkle.htwinkle.entity.User;
+import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.dialog.MyDialog;
 import com.twinkle.htwinkle.init.Utils;
 
@@ -47,8 +45,6 @@ import static com.twinkle.htwinkle.init.Constant.REQUEST_CODE;
 
 @ContentView(R.layout.activity_write_mess)
 public class WriteMessActivity extends TakePhotoActivity implements Bmob.BmobUploadPostPicListener, Bmob.BmobAddPostListener {
-
-    private static final String TAG = "WriteMessActivity";
 
     private MyDialog myDialog;
 
@@ -140,11 +136,28 @@ public class WriteMessActivity extends TakePhotoActivity implements Bmob.BmobUpl
 
     private void sendPost() {
         post.setTopic(listtopic);
-        post.setContent( String.valueOf(wMess_et_mess.getText()) );
+        post.setContent(String.valueOf(wMess_et_mess.getText()));
         post.setAuthor(BmobUser.getCurrentUser(User.class));
-        Log.i(TAG, "sendPost: "+ JSON.toJSONString(post));
+        post.setTypes(combineTypes());
+
+        //Log.i(TAG, "sendPost: " + JSON.toJSONString(post));
 
         Bmob.INSTANCE.BmobAddPost(post);
+    }
+
+
+    private int combineTypes() {
+
+        if (list == null) return 1;
+
+        if (list.size() > 1) {
+            return 2;
+        } else if (list.size() == 1) {
+            return 3;
+        } else {
+            return 1;
+        }
+
     }
 
 
@@ -195,7 +208,7 @@ public class WriteMessActivity extends TakePhotoActivity implements Bmob.BmobUpl
 
         wMess_rv_img.setLayoutManager(new GridLayoutManager(WriteMessActivity.this, 3));
 
-        WMessIvAdapter adapter = new WMessIvAdapter(R.layout.base_imageview, list);
+        WMessIvAdapter adapter = new WMessIvAdapter(R.layout.base_imageview_wm, list);
         wMess_rv_img.setAdapter(adapter);
 
         adapter.setOnItemChildClickListener((a, v, p) -> {

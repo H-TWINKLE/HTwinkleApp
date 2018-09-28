@@ -16,7 +16,7 @@ public class Constant {
 
     public static final int REQUEST_CODE = 10003;  //回调id
 
-    public static final int[] my_menu_user_icon = { R.drawable.user, R.drawable.coll, R.drawable.dra};
+    public static final int[] my_menu_user_icon = { R.drawable.user, R.drawable.coll};
 
     public static final int[] my_menu_jwgl_icon = { R.drawable.info, R.drawable.jwgl_ttb, R.drawable.jwgl_score};
 
@@ -62,5 +62,21 @@ public class Constant {
     public final static String UPDATEUSERPASSINNOTLOGIN = "https://api2.bmob.cn/1/updateUserPassword/";
 
     public final static String UPDATEUSERPASSINNOTLOGINBYPASS2 = "https://api2.bmob.cn/1/users/";
+
+    public final static String JWGLURL = "http://htwinkle.cn/Twinkle/jwgl/api";
+
+    public final static String EOLURL = "http://htwinkle.cn/Twinkle/eol/api";
+
+    public final static  String JWGL = "http://jwgl.cdnu.edu.cn/";
+
+    public final static String ROBOTURL = "http://www.tuling123.com/openapi/api?key=057c818d3b1b430faa4ee25b638a5b7c";
+
+    public final static String EVERYONEPIC = "http://htwinkle.cn/Twinkle/img/api";
+
+    public final static String EVERYONEART = "http://htwinkle.cn/Twinkle/article/api";
+
+    public final static String EVERYONEMUSIC = "http://htwinkle.cn/Twinkle/netmusic/api";
+
+    public final static  String NetMusicUrl = "https://music.163.com/#/song?id=";
 
 }

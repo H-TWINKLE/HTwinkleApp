@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.twinkle.htwinkle.R;
-import com.twinkle.htwinkle.bean.IndexTypes;
+import com.twinkle.htwinkle.entity.IndexTypes;
 
 import java.util.List;
 
@@ -18,7 +18,11 @@ public class IndexTypesAdapter extends BaseQuickAdapter<IndexTypes, BaseViewHold
 
     @Override
     protected void convert(BaseViewHolder helper, IndexTypes item) {
-        helper.setText(R.id.main_cr_types_tv, item.getTitle())
-                .setImageResource(R.id.main_cr_types_iv, item.getIcon());
+        helper.setText(R.id.main_cr_types_tv, item.getTitle());
+        helper.setImageResource(R.id.main_cr_types_iv, item.getIcon());
+
+        helper.addOnClickListener(R.id.main_cr_types_tv);
+        helper.addOnClickListener(R.id.main_cr_types_iv);
+
     }
 }

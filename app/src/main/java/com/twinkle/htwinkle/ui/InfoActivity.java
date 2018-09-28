@@ -7,11 +7,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -29,8 +27,8 @@ import com.loopj.android.image.SmartImageView;
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.adapter.FragAdapter;
 import com.twinkle.htwinkle.base.BaseActivity;
-import com.twinkle.htwinkle.bean.User;
-import com.twinkle.htwinkle.bmob.Bmob;
+import com.twinkle.htwinkle.entity.User;
+import com.twinkle.htwinkle.net.Bmob;
 import com.twinkle.htwinkle.dialog.MyDialog;
 import com.twinkle.htwinkle.listener.AppBarStateChangeListener;
 
@@ -47,8 +45,6 @@ import cn.bmob.v3.datatype.BmobFile;
 
 
 public class InfoActivity extends BaseActivity implements ViewPager.OnPageChangeListener, TakePhoto.TakeResultListener, InvokeListener, Bmob.BmobUploadPicListener, Bmob.BmobPicUpdateListener {
-
-    private static final String TAG = "InfoActivity";
 
     private MyDialog dialog;
 
@@ -70,8 +66,6 @@ public class InfoActivity extends BaseActivity implements ViewPager.OnPageChange
     @ViewInject(value = R.id.info_al)
     private AppBarLayout info_al;
 
-    @ViewInject(value = R.id.info_tl)
-    private TabLayout info_tl;
 
     private List<Fragment> lists;
 
@@ -156,7 +150,6 @@ public class InfoActivity extends BaseActivity implements ViewPager.OnPageChange
 
     @Override
     public void onPageSelected(int position) {
-        Log.i(TAG, "onPageSelected: " + position);
         switch (position) {
             case 0:
                 info_tb.setTitle(R.string.info_index);

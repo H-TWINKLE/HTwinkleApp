@@ -3,26 +3,56 @@ package com.twinkle.htwinkle.init;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.renderscript.Allocation;
+import android.renderscript.Element;
+import android.renderscript.RenderScript;
+import android.renderscript.ScriptIntrinsicBlur;
+import android.text.Editable;
+import android.text.Html;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
+import android.util.Log;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.twinkle.htwinkle.R;
-import com.twinkle.htwinkle.bean.User;
-import com.twinkle.htwinkle.bean.ViewTypes;
+import com.twinkle.htwinkle.entity.Post;
+import com.twinkle.htwinkle.entity.Title;
+import com.twinkle.htwinkle.entity.User;
+import com.twinkle.htwinkle.entity.ViewTypes;
 
+import org.xutils.DbManager;
+import org.xutils.common.Callback;
+import org.xutils.db.table.TableEntity;
+import org.xutils.http.RequestParams;
 import org.xutils.image.ImageOptions;
+import org.xutils.x;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import cn.bmob.v3.BmobUser;
 
 
 public enum Utils {
     INSTANCE;
+
+
+    private static final String TAG = "Utils";
 
     public void saveUser(Context context, String tel, String pass) {
 
@@ -61,8 +91,168 @@ public enum Utils {
         return new ImageOptions.Builder().setLoadingDrawableId(R.drawable.load).setIgnoreGif(true).build();
     }
 
+    public ImageOptions IndexOptions() {
+        return new ImageOptions.Builder().setLoadingDrawableId(R.drawable.load).setIgnoreGif(true).setSize(800, 800).build();
+    }
+
+    public Bitmap blurBitmap(Context context, Bitmap image, float blurRadius) { // 计算图片缩小后的长宽
+        int width = Math.round(image.getWidth() * 0.4f);
+        int height = Math.round(image.getHeight() * 0.4f); // 将缩小后的图片做为预渲染的图片
+        Bitmap inputBitmap = Bitmap.createScaledBitmap(image, width, height, false); // 创建一张渲染后的输出图片
+        Bitmap outputBitmap = Bitmap.createBitmap(inputBitmap); // 创建RenderScript内核对象
+        RenderScript rs = RenderScript.create(context); // 创建一个模糊效果的RenderScript的工具对象
+        ScriptIntrinsicBlur blurScript = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs)); // 由于RenderScript并没有使用VM来分配内存,所以需要使用Allocation类来创建和分配内存空间
+        // 创建Allocation对象的时候其实内存是空的,需要使用copyTo()将数据填充进去
+        Allocation tmpIn = Allocation.createFromBitmap(rs, inputBitmap);
+        Allocation tmpOut = Allocation.createFromBitmap(rs, outputBitmap); // 设置渲染的模糊程度, 25f是最大模糊度
+        blurScript.setRadius(blurRadius); // 设置blurScript对象的输入内存
+        blurScript.setInput(tmpIn); // 将输出数据保存到输出内存中
+        blurScript.forEach(tmpOut); // 将数据填充到Allocation中
+        tmpOut.copyTo(outputBitmap);
+        return outputBitmap;
+    }
+
+    public <T> List<Title> ReflexByClass(Context context, T t) {
+
+        if (t == null) return null;
+
+        List<Title> list = new ArrayList<>();
+
+        Field[] fields = t.getClass().getDeclaredFields();
+
+        for (Field f : fields) {
+
+            f.setAccessible(true);
+
+            try {
+                switch (f.getName()) {
+                    case "dates":
+                        list.add(new Title("更新时间", DateUtils.formatDateTime(context, Long.valueOf(f.get(t).toString()),
+                                DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_TIME)));
+                        break;
+                    case "lblCsrq":
+                        list.add(new Title("出生日期", String.valueOf(f.get(t))));
+                        break;
+                    case "lblCc":
+                        list.add(new Title("学历层次", String.valueOf(f.get(t))));
+                        break;
+                    case "lblDqszj":
+                        list.add(new Title("当前所在级", String.valueOf(f.get(t))));
+                        break;
+                    case "lblJtszd":
+                        list.add(new Title("家庭所在地", String.valueOf(f.get(t))));
+                        break;
+                    case "lblKsh":
+                        list.add(new Title("考生号", String.valueOf(f.get(t))));
+                        break;
+                    case "lblMz":
+                        list.add(new Title("民族", String.valueOf(f.get(t))));
+                        break;
+                    case "lblRxrq":
+                        list.add(new Title("入学日期", String.valueOf(f.get(t))));
+                        break;
+                    case "lblSfzh":
+                        list.add(new Title("身份证号码", String.valueOf(f.get(t))));
+                        break;
+                    case "lblXb":
+                        list.add(new Title("性别", String.valueOf(f.get(t))));
+                        break;
+                    case "lblXjzt":
+                        list.add(new Title("学籍状态", String.valueOf(f.get(t))));
+                        break;
+                    case "lblXy":
+                        list.add(new Title("学院", String.valueOf(f.get(t))));
+                        break;
+                    case "lblXz":
+                        list.add(new Title("学制", String.valueOf(f.get(t))));
+                        break;
+                    case "lblXzb":
+                        list.add(new Title("行政班", String.valueOf(f.get(t))));
+                        break;
+                    case "lblYycj":
+                        list.add(new Title("高考英语成绩", String.valueOf(f.get(t))));
+                        break;
+                    case "lblYzbm":
+                        list.add(new Title("邮政编码", String.valueOf(f.get(t))));
+                        break;
+                    case "lblZymc":
+                        list.add(new Title("专业名称", String.valueOf(f.get(t))));
+                        break;
+                    case "lblZzmm":
+                        list.add(new Title("政治面貌", String.valueOf(f.get(t))));
+                        break;
+                    case "xm":
+                        list.add(new Title("姓名", String.valueOf(f.get(t))));
+                        break;
+                    case "admin":
+                        list.add(new Title("学号", String.valueOf(f.get(t))));
+                        break;
+                    case "loginfre":
+                        list.add(new Title("登录次数", String.valueOf(f.get(t))));
+                        break;
+                    case "name":
+                        list.add(new Title("姓名", String.valueOf(f.get(t))));
+                        break;
+                    case "onlinetime":
+                        list.add(new Title("在线时长", String.valueOf(f.get(t))));
+                        break;
+                    case "xh":
+                        list.add(new Title("学号", String.valueOf(f.get(t))));
+                        break;
+
+                }
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+        return list;
+    }
+
+
+    public DbManager.DaoConfig daoConfig = new DbManager.DaoConfig()
+            //.setDbDir(new File(Environment.getExternalStorageDirectory().getPath()+"/How/"))
+            .setDbName("htwinkle.db")
+            //设置数据库路径，默认存储在app的私有目录
+            .setDbVersion(1)
+            .setAllowTransaction(true)    //设置是否允许事务，默认true
+            //设置数据库打开的监听
+            .setDbOpenListener(db -> {
+                db.getDatabase().enableWriteAheadLogging();
+            })
+            //设置数据库更新的监听
+            .setDbUpgradeListener((db, oldVersion, newVersion) -> {
+            })
+            //设置表创建的监听
+            .setTableCreateListener((db, table) -> {
+            });
+
+
     public ImageOptions ImageOptionsInCir() {
         return new ImageOptions.Builder().setLoadingDrawableId(R.drawable.logo).setIgnoreGif(false).setCircular(true).build();
+    }
+
+    public String getPostTopicInString(Post post) {
+
+        if (post == null || post.getTopic() == null) return "";
+
+        StringBuilder stringBuffer = new StringBuilder();
+        for (String li : post.getTopic()) {
+            stringBuffer.append(li);
+            stringBuffer.append(" ");
+        }
+
+        return stringBuffer.toString();
+
+    }
+
+    public String setPraiseFromIntToString(TextView textView, int value) {
+
+        if ("".equals(textView.getText().toString())) {
+            return String.valueOf(value);
+        }
+        return String.valueOf(Integer.parseInt(textView.getText().toString()) + value);
     }
 
 
@@ -269,6 +459,15 @@ public enum Utils {
             default:
                 return "LV0";
         }
+    }
+
+
+    public Spanned convertHtmlText(String text) {
+
+        if (TextUtils.isEmpty(text)) {
+            return Html.fromHtml("");
+        }
+        return Html.fromHtml(text);
     }
 
 

@@ -26,10 +26,6 @@ public class WMessIvAdapter extends BaseQuickAdapter<TImage, BaseViewHolder> {
 
         x.image().bind(view, item.getOriginalPath(), Utils.INSTANCE.baseOptions());
 
-        //view.setImageBitmap(BitmapFactory.decodeFile(item.getOriginalPath()));
-
-        //helper.setImageBitmap(R.id.wMess_rv_base_iv, BitmapFactory.decodeFile(item.getOriginalPath()));
-
         helper.addOnClickListener(R.id.wMess_rv_base_iv_del);
 
     }
