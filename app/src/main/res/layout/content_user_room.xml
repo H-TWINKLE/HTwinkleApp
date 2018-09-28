@@ -9,8 +9,7 @@
         android:id="@+id/user_room_siv_header"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        tools:src="@drawable/test" />
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/user_room_tv_username"

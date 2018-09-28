@@ -24,8 +24,8 @@
                 android:id="@+id/index_cr_iv_content_one_img_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:ellipsize="end"
                 android:maxLines="6"
                 android:textColor="#393838"
@@ -38,8 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:contentDescription="@null"
-                android:scaleType="centerCrop"
-                tools:src="@drawable/test" />
+                android:scaleType="centerCrop" />
 
 
         </LinearLayout>
