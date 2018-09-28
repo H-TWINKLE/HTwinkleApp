@@ -27,6 +27,7 @@ import java.util.Locale;
 import cn.bmob.v3.BmobUser;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnShowRationale;
+import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
 @RuntimePermissions
@@ -162,7 +163,7 @@ public class WelcomeActivity extends BaseActivity implements Twinkle.JwglListene
 
 
     @OnShowRationale({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
-    void onRunShow() {
+    void onRunShow(final PermissionRequest request) {
     }
 
 
