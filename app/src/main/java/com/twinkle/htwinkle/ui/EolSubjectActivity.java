@@ -88,5 +88,6 @@ public class EolSubjectActivity extends BaseRefreshActivity<List, BaseTitleEolAd
     public void onJwglListenerFailure(String text) {
         dialog.dismiss();
         onFailureGetList(text);
+        this.finish();
     }
 }

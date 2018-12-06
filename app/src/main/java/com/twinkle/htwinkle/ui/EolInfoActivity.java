@@ -77,5 +77,6 @@ public class EolInfoActivity extends BaseRefreshActivity<Title, BaseTitleJwglAda
     public void onJwglListenerFailure(String text) {
         dialog.dismiss();
         onFailureGetList(text);
+        this.finish();
     }
 }

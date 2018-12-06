@@ -92,5 +92,6 @@ public class JwglInfoActivity extends BaseRefreshActivity<Title, BaseTitleJwglAd
     public void onJwglListenerFailure(String text) {
         dialog.dismiss();
         onFailureGetList(text);
+        this.finish();
     }
 }

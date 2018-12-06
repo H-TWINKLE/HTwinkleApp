@@ -175,6 +175,6 @@ public class JwglTtbActivity extends BaseActivity implements Twinkle.JwglListene
 
         myDialog.dismiss();
         Toast.makeText(setActivity(), text, Toast.LENGTH_SHORT).show();
-
+        this.finish();
     }
 }

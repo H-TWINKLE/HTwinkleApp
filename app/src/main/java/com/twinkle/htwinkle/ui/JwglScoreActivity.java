@@ -92,5 +92,6 @@ public class JwglScoreActivity extends BaseRefreshActivity<JwglScore, JwglScoreA
     public void onJwglListenerFailure(String text) {
         dialog.dismiss();
         onFailureGetList(text);
+        this.finish();
     }
 }
