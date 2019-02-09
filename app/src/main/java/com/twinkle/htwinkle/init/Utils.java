@@ -405,37 +405,42 @@ public enum Utils {
     public String setUserLvByString(User u) {
 
         if (u.getLv() == null) return "LV0";
-        String lv = u.getLv();
-        switch (Integer.parseInt(lv) / 1000) {
-            case 0:
-                return "LV0";
-            case 1:
-                return "LV1";
 
-            case 2:
-                return "LV2";
+        int lv = Integer.parseInt(u.getLv());
+        String val;
+        if (lv < 1000) {
+            val = "LV0";
+        } else if (lv > 1000 && lv < 2000) {
 
-            case 3:
-                return "LV3";
+            val = "LV1";
+        } else if (lv > 2000 && lv < 3000) {
 
-            case 4:
-                return "LV4";
+            val = "LV2";
+        } else if (lv > 3000 && lv < 4000) {
 
-            case 5:
-                return "LV5";
+            val = "LV3";
+        } else if (lv > 4000 && lv < 5000) {
 
-            case 6:
-                return "LV6";
+            val = "LV4";
+        } else if (lv > 5000 && lv < 6000) {
 
-            case 7:
-                return "LV7";
+            val = "LV5";
+        } else if (lv > 6000 && lv < 7000) {
 
-            case 8:
-                return "LV8";
+            val = "LV6";
+        } else if (lv > 7000 && lv < 8000) {
 
-            default:
-                return "LV0";
+            val = "LV7";
+        } else if (lv > 8000 && lv < 9000) {
+
+            val = "LV8";
+        } else if (lv > 9000 && lv < 10000) {
+
+            val = "LV9";
+        } else {
+            val = "尊贵会员";
         }
+        return val;
     }
 
 
