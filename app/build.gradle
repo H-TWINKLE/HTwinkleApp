@@ -18,7 +18,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
-        versionName "4.02"
+        versionName "4.05"
         testInstrumentationRunner "android.support.view.runner.AndroidJUnitRunner"
     }
     packagingOptions {

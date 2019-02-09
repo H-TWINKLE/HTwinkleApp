@@ -31,6 +31,7 @@ import com.twinkle.htwinkle.entity.User;
 import com.twinkle.htwinkle.entity.ViewTypes;
 import com.twinkle.htwinkle.init.Utils;
 import com.twinkle.htwinkle.net.Bmob;
+import com.twinkle.htwinkle.net.Twinkle;
 import com.twinkle.htwinkle.receiver.UserInfoReceiver;
 import com.twinkle.htwinkle.service.SubjectService;
 
@@ -132,6 +133,8 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         user = BmobUser.getCurrentUser(User.class);
 
         startService(new Intent(MainActivity.this, SubjectService.class));
+
+        Twinkle.INSTANCE.checkUpdate(getApplicationContext(), false);
 
         Bmob.INSTANCE.updateUserLv(50);
 
