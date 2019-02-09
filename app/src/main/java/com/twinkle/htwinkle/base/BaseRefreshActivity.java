@@ -35,6 +35,8 @@ public abstract class BaseRefreshActivity<K, V extends BaseQuickAdapter<K, BaseV
 
     public V adapter;
 
+    public RecyclerView.LayoutManager layoutManager;
+
     @ViewInject(value = R.id.base_activity_refresh_layout)
     public SwipeRefreshLayout base_activity_refresh_layout;
 
@@ -62,7 +64,12 @@ public abstract class BaseRefreshActivity<K, V extends BaseQuickAdapter<K, BaseV
         base_activity_refresh_layout.setColorSchemeColors(Color.rgb(47, 223, 189));
         base_activity_refresh_layout.setOnRefreshListener(this::refresh);
 
-        base_activity_recycler_view.setLayoutManager(new LinearLayoutManager(setActivity()));
+        if (layoutManager == null) {
+            base_activity_recycler_view.setLayoutManager(new LinearLayoutManager(setActivity()));
+        } else {
+            base_activity_recycler_view.setLayoutManager(layoutManager);
+        }
+
         base_activity_recycler_view.setAdapter(adapter);
 
         if (isRefresh) {

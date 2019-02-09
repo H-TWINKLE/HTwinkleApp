@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.twinkle.htwinkle.R;
 import com.twinkle.htwinkle.init.Utils;
+import com.twinkle.htwinkle.net.Twinkle;
 
 import java.util.List;
 
@@ -101,11 +102,16 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
                 break;
             case 5:
-                Toast.makeText(this, R.string.check_version_is_newer, Toast.LENGTH_SHORT).show();
+                checkUpdate();
                 break;
             default:
                 break;
         }
+    }
+
+    private void checkUpdate() {
+        Toast.makeText(this, R.string.check_update, Toast.LENGTH_SHORT).show();
+        Twinkle.INSTANCE.checkUpdate(getApplicationContext(), true);
     }
 
     private void setupActionBar() {

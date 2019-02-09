@@ -63,6 +63,7 @@
     <string name="my_lv">LV5</string>
     <string name="my_focus">我的关注</string>
     <string name="my_fans">我的粉丝</string>
+    <string name="my_moments">我的朋友圈</string>
     <string name="login_out">注销</string>
     <string name="login_out_tip">确定退出当前账户？</string>
     <string name="positive">确定</string>
@@ -134,6 +135,8 @@
     <string-array name="my_menu_tool">
         <item>智能小华</item>
         <item>电脑义务维修</item>
+        <item>水卡充值</item>
+        <item>电影推荐</item>
     </string-array>
 
     <string name="my_menu_seeting_title">设置</string>
@@ -274,6 +277,7 @@
     <string name="clear_cache_failure">清除缓存失败</string>
 
     <string name="check_version_is_newer">您已安装最新版本！</string>
+    <string name="check_update">正在检查版本信息</string>
     <string name="red_point">小红点</string>
 
 

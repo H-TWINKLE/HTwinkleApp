@@ -22,6 +22,7 @@ import org.xutils.http.RequestParams;
 import org.xutils.x;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -1308,6 +1309,7 @@ public enum Bmob {
     }
 
 
+    //查询用户关注
     public void BmobGetListUserFocus(int current, String equal) {
 
         BmobQuery<Focus> focusBmobQuery = new BmobQuery<>();
@@ -1333,6 +1335,7 @@ public enum Bmob {
 
 
     }
+
 
     public interface BmobGetListUserFocusListener {
         void onBmobGetListUserFocusSuccess(List<Focus> list);
@@ -1496,6 +1499,48 @@ public enum Bmob {
 
             }
         });
+    }
+
+    //查询所有关注 不分页
+    public void BmobGetListUserFocus(int num, FindListener<Post> findListener) {
+
+        BmobQuery<Focus> focusBmobQuery = new BmobQuery<>();
+        focusBmobQuery.addWhereEqualTo("onFocusUser", BmobUser.getCurrentUser(User.class));
+        focusBmobQuery.setLimit(1000);
+        focusBmobQuery.order("-createdAt");
+        focusBmobQuery.findObjects(new FindListener<Focus>() {
+            @Override
+            public void done(List<Focus> list, BmobException e) {
+
+                List<String> list1 = new ArrayList<>();
+
+                for (Focus focus : list) {
+                    list1.add(focus.getFocusUser().getObjectId());
+                }
+
+                if (e == null) {
+                    getUserMoment(num, list1, findListener);
+                }
+            }
+        });
+
+
+    }
+
+    private void getUserMoment(int current, List<String> friendIds, FindListener<Post> findListener) {
+
+        BmobQuery<User> innerQuery = new BmobQuery<User>();
+        innerQuery.addWhereContainedIn("objectId", friendIds);
+
+        BmobQuery<Post> query = new BmobQuery<>();
+        query.addWhereMatchesQuery("author", "_User", innerQuery);
+        query.setLimit(10);
+        query.setSkip(10 * current);
+        query.order("-updatedAt");
+        query.include("author");// 希望在查询帖子信息的同时也把发布人的信息查询出来
+        query.findObjects(findListener);
+
+
     }
 
 

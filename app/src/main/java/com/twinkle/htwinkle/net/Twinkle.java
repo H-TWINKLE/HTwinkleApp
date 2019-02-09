@@ -1,8 +1,13 @@
 package com.twinkle.htwinkle.net;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
+import com.twinkle.htwinkle.BuildConfig;
 import com.twinkle.htwinkle.entity.Eol;
 import com.twinkle.htwinkle.entity.EveryArticle;
 import com.twinkle.htwinkle.entity.EveryImg;
@@ -682,6 +687,59 @@ public enum Twinkle {
             }
         }
 
+    }
+
+    public void getListFilm(int start, Callback.CommonCallback<String> callback) {
+
+        RequestParams requestParams = new RequestParams();
+        requestParams.setUri("http://api.douban.com/v2/movie/top250");
+        requestParams.addParameter("start", start * 20);
+        requestParams.addParameter("count", 20);
+
+        x.http().get(requestParams, callback);
+
+    }
+
+
+    public void checkUpdate(Context context, boolean flag) {
+        RequestParams requestParams = new RequestParams("http://api.fir.im/apps/latest/5bae030dca87a859e225fef9?api_token=ed73d0087f975a63bd9e85a12b3924a1");
+        x.http().get(requestParams, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                JSONObject jsonObject = JSONObject.parseObject(result);
+
+                Double ver = Double.valueOf(jsonObject.getString("versionShort"));
+                Double verName = Double.valueOf(BuildConfig.VERSION_NAME);
+
+                if (ver > verName) {
+                    Toast.makeText(context, "正在前往浏览器更新APP！", Toast.LENGTH_SHORT).show();
+
+                    Uri uri = Uri.parse(jsonObject.getString("installUrl"));
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    context.startActivity(intent);
+                } else {
+                    if (flag) {
+                        Toast.makeText(context, "您已安装最新版本: " + ver, Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                Toast.makeText(context, ex.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
     }
 
 

@@ -152,49 +152,56 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
         headerAndFooterAdapter.addHeaderView(setHeader2());
         headerAndFooterAdapter.setOnItemClickListener(
                 (a, v, p) -> {
-                    if (list.size() - 1 == p) {
-                        showDialog();
-                    } else if (p == 1) {
-                        startActivity(new Intent(this, InfoActivity.class));
-                    } else if (p == 2) {
-                        startActivity(new Intent(this, CollectActivity.class));
-                    } else if (list.size() - 2 == p) {
-                        startActivity(new Intent(this, SettingsActivity.class));
-                    } else {
-                        switch (list.get(p).getMenuTitle()) {
-                            case "个人信息":
-                                toJwglActivity(JwglInfoActivity.class);
-                                break;
-                            case "我的成绩":
-                                toJwglActivity(JwglScoreActivity.class);
-                                break;
-                            case "我的课表":
-                                toJwglActivity(JwglTtbActivity.class);
-                                break;
-                            case "我的信息":
-                                toEolActivity(EolInfoActivity.class);
-                                break;
-                            case "我的作业":
-                                toEolActivity(EolSubjectActivity.class);
-                                break;
-                            case "电脑义务维修":
-                                joinQQGroup(getString(R.string.qingzhi));
-                                break;
-                            case "智能小华":
-                                startActivity(new Intent(MainActivity.this, RobotActivity.class));
-                                break;
-                            case "每日一文":
-                                startActivity(new Intent(MainActivity.this, EveryArticleActivity.class));
-                                break;
-                            case "每日一曲":
-                                startActivity(new Intent(MainActivity.this, EveryInOneMusicActivity.class));
-                                break;
-                        }
-
+                    switch (headerAndFooterAdapter.getData().get(p).getMenuTitle()) {
+                        case "注销":
+                            showDialog();
+                            break;
+                        case "个人空间":
+                            startActivity(new Intent(this, InfoActivity.class));
+                            break;
+                        case "我的收藏":
+                            startActivity(new Intent(this, CollectActivity.class));
+                            break;
+                        case "设置":
+                            startActivity(new Intent(this, SettingsActivity.class));
+                            break;
+                        case "个人信息":
+                            toJwglActivity(JwglInfoActivity.class);
+                            break;
+                        case "我的成绩":
+                            toJwglActivity(JwglScoreActivity.class);
+                            break;
+                        case "我的课表":
+                            toJwglActivity(JwglTtbActivity.class);
+                            break;
+                        case "我的信息":
+                            toEolActivity(EolInfoActivity.class);
+                            break;
+                        case "我的作业":
+                            toEolActivity(EolSubjectActivity.class);
+                            break;
+                        case "电脑义务维修":
+                            joinQQGroup(getString(R.string.qingzhi));
+                            break;
+                        case "智能小华":
+                            startActivity(new Intent(MainActivity.this, RobotActivity.class));
+                            break;
+                        case "每日一文":
+                            startActivity(new Intent(MainActivity.this, EveryArticleActivity.class));
+                            break;
+                        case "每日一曲":
+                            startActivity(new Intent(MainActivity.this, EveryInOneMusicActivity.class));
+                            break;
+                        case "水卡充值":
+                            startWeiXin();
+                            break;
+                        case "电影推荐":
+                            startActivity(new Intent(MainActivity.this, FilmActivity.class));
+                            break;
 
                     }
-                });
 
+                });
         main_side_rv.setAdapter(headerAndFooterAdapter);
     }
 
@@ -292,13 +299,19 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
 
     private View setHeader2() {
         View view = getLayoutInflater().inflate(R.layout.header_user_count, (ViewGroup) main_side_rv.getParent(), false);
-        LinearLayout focus = view.findViewById(R.id.item_main_focus);
 
+        LinearLayout focus = view.findViewById(R.id.item_main_focus);
         focus.setOnClickListener(v -> startActivity(1));
 
         LinearLayout onfocus = view.findViewById(R.id.item_main_on_focus);
-
         onfocus.setOnClickListener((e) -> startActivity(2));
+
+        LinearLayout moment = view.findViewById(R.id.item_main_moment);
+        moment.setOnClickListener((e) ->
+        {
+            startActivity(new Intent(this, MomentActivity.class));
+        });
+
         return view;
     }
 
@@ -414,6 +427,30 @@ public class MainActivity extends BaseActivity implements ViewPager.OnPageChange
             Toast.makeText(getApplicationContext(), "您好像没有安装QQ喔", Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+    private void startWeiXin() {
+
+        /*//Uri uri = Uri.parse("weixin://dl/business/?ticket=t051864a28fe5905537af1f43698b3e8b");
+        Uri uri = Uri.parse("weixin://dl/officialaccounts/?appid=wx8910f2f8a484fee3");
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setData(uri);
+        startActivity(intent);*/
+
+        try {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.setClassName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareImgUI");
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "热水卡充值：\n" + "http://wlkji.top/app/index.php?i=4&t=4");//注意：这里只是分享文本内容
+            sendIntent.setType("text/plain");
+            startActivityForResult(sendIntent, 1);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "你好像没有安装微信喔", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 

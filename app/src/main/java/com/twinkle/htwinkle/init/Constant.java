@@ -22,7 +22,7 @@ public class Constant {
 
     public static final int[] my_menu_one_icon = {R.drawable.onearticle, R.drawable.onemusic, R.drawable.onepic};
 
-    public static final int[] my_menu_tool_icon = {R.drawable.toolxiaohua, R.drawable.tooldiannao};
+    public static final int[] my_menu_tool_icon = {R.drawable.toolxiaohua, R.drawable.tooldiannao, R.drawable.tool_water, R.drawable.tool_film};
 
     public static final int[] my_menu_setting_icon = {R.drawable.setting, R.drawable.logout};
 

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <com.loopj.android.image.SmartImageView
+            android:id="@+id/item_film_siv"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            tools:src="@drawable/wel" />
+
+        <TextView
+            android:id="@+id/item_film_tv_num"
+            android:layout_width="45dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:background="#F1A64A"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            tools:text="明星" />
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <TextView
+        android:id="@+id/item_film_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="#2C2C2C"
+        android:textSize="16sp"
+        tools:text="明星" />
+
+    <TextView
+        android:id="@+id/item_film_tv_introduce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="#5E5D5D"
+        android:textSize="14sp"
+        tools:text="明星" />
+
+
+</LinearLayout>
