@@ -2,7 +2,7 @@
 
 android 版本 
 
-联动bmob mob twinkle.cn网页版
+联动bmob mob htwinkle.cn 网页版
 
 感谢
 
